@@ -5,6 +5,7 @@ import ProductCategories from "../ProductCategories/ProductCategories";
 import Contact from "../Contact/Contact";
 import { Link } from "react-router-dom";
 
+
 const Home = () => {
   return (
     <div>
