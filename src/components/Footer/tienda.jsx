@@ -4,7 +4,7 @@ import React from "react";
 const Tienda = () => {
     return (
         <div>
-          <h1>ProductCatalog</h1>
+          <h1>Aqui estan los productos</h1>
           
         </div>
       );

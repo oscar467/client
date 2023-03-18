@@ -8,26 +8,44 @@ const Footer = () => {
       <section class='section one'> 
         <ul> 
           <div> Sobre Cool Style</div>
-         <li><a href="/">Tienda</a></li>
-         <li><a href="/">Promociones</a></li>
+            <div>
+              <Link to="/Tienda">Tienda</Link>
+            </div>
+
+            <div>
+              <Link to="/Promociones">Promociones</Link>
+            </div>
         </ul>
       </section>
 
       <section class='section two'> 
         <ul> 
           <div> Politicas</div>
-         <li><a href="/">Términos y condiciones</a></li>
-         <li><a href="/client">Cambios y devoluciones</a></li>
-         <li><a href="/client">Confidencialidad</a></li>
-         <li><a href="/">Envíos</a></li>
+          <div>
+            <Link to="/TerminosyCondiciones">Términos y condiciones</Link>
+          </div>
+          <div>
+            <Link to="/CambiosyDevoluciones">Cambios y Devoluciones</Link>
+          </div>
+          <div>
+            <Link to="/Confidencialidad">Confidencialidad</Link>
+          </div>
+          <div>
+            <Link to="/Envios">Envíos</Link>
+          </div>
         </ul>
       </section>
 
       <section class='section three'> 
         <ul> 
           <div> Atención al Cliente</div>
-         <li><a href="/">Preguntas frecuentes</a></li>
-         <li><a href="/">Contáctanos</a></li>
+
+         <div>
+            <Link to="/PreguntasFrecuentes">Preguntas Frecuentes</Link>
+          </div>
+          <div>
+            <Link to="/Contactanos">Contáctanos</Link>
+          </div>
          
         </ul>
       </section>

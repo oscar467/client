@@ -3,9 +3,8 @@ import React from "react";
 
 const Contactanos = () =>{
     return(
-        <div>
+    <div>
         <h1>Contactos </h1>
-    
     </div>
     )
 }
