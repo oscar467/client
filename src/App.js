@@ -6,6 +6,14 @@ import ProductCatalog from "./components/ProductCatalog/ProductCatalog";
 import ProductCreate from "./components/ProductCreate/ProductCreate";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import Tienda from "./components/Footer/tienda";
+import Promociones from "./components/Footer/promociones";
+import TerminosyCondiciones from "./components/Footer/terminosycondiciones";
+import CambiosyDevoluciones from "./components/Footer/cambiosydevoluciones";
+import Confidencialidad from "./components/Footer/confidencialidad";
+import Envios from "./components/Footer/envios";
+import PreguntasFrecuentes from "./components/Footer/preguntasfrecuentes";
+import Contactanos from "./components/Footer/contactanos";
 
 function App() {
   return (
@@ -17,8 +25,21 @@ function App() {
         <Route path="/ProductCreate" element={<ProductCreate />} />
         <Route path="/Contact" element={<Contact />} />
       </Routes>
+
       <Footer />
+      <Routes>
+        <Route path="/Tienda" element={<Tienda/>} />
+        <Route path="/Promociones" element={<Promociones />} />
+        <Route path="/TerminosyCondiciones" element={<TerminosyCondiciones/>} />
+        <Route path="/CambiosyDevoluciones" element={<CambiosyDevoluciones />} />
+        <Route path="/Confidencialidad" element={<Confidencialidad/>} />
+        <Route path="/Envios" element={<Envios/>} />
+        <Route path="/PreguntasFrecuentes" element={<PreguntasFrecuentes/>} />
+        <Route path="/Contáctanos" element={<Contactanos/>} />
+
+      </Routes>
     </div>
+   
   );
 }
 
