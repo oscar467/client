@@ -4,24 +4,26 @@ import ProductOffers from "../ProductOffers/ProductOffers";
 import ProductCategories from "../ProductCategories/ProductCategories";
 import Contact from "../Contact/Contact";
 import { Link } from "react-router-dom";
+import { Box } from "@mui/system";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
 
 const Home = () => {
   return (
-    <div>
-      <h1>This is the Home</h1>
+    <>
       <Banner />
-      <h2>Offers of day:</h2>
-      <ProductOffers />
-      <button>
-        <Link to="/Offers">See all offers</Link>
-      </button>
-      <h2>Categories:</h2>
-      <ProductCategories />
-      <button>
-        <Link to="/ProductCatalog">See all Products</Link>
-      </button>
-      <Contact />
-    </div>
+
+      <Container fixed>
+        <Box sx={{ width: "100%" }}>
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={6}
+          ></Stack>
+        </Box>
+      </Container>
+    </>
   );
 };
 

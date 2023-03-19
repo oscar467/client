@@ -17,9 +17,21 @@ import { Grid, IconButton, Stack, TextField } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import { useEffect, useState } from "react";
 import ScreenSearchDesktopIcon from "@mui/icons-material/ScreenSearchDesktop";
+import { makeStyles } from "@mui/styles";
 const drawerWidth = 240;
 
+const useStyles = makeStyles((theme) => ({
+  link: {
+    color: "white",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+}));
+
 const NavBar = (props) => {
+  const classes = useStyles();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -49,7 +61,7 @@ const NavBar = (props) => {
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
-      sx={{ textAlign: "center", backgroundColor: "#212121", height: "100%" }}
+      sx={{ textAlign: "center", backgroundColor: "black", height: "100%" }}
     >
       <Grid
         container
@@ -69,22 +81,30 @@ const NavBar = (props) => {
           <List>
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                <Link to="/">Home</Link>
+                <Link to="/" className={classes.link}>
+                  Home
+                </Link>
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                <Link to="/ProductCatalog">Catalog</Link>
+                <Link to="/ProductCatalog" className={classes.link}>
+                  Catalog
+                </Link>
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                <Link to="/ProductCreate">Create</Link>
+                <Link to="/ProductCreate" className={classes.link}>
+                  Create
+                </Link>
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                <Link to="/Contact">Contact</Link>
+                <Link to="/Contact" className={classes.link}>
+                  Contact
+                </Link>
               </ListItemButton>
             </ListItem>
           </List>
@@ -102,76 +122,101 @@ const NavBar = (props) => {
       direction="row"
       justifyContent="center"
       alignItems="center"
-      sx={{
-        marginBottom: "80px",
-        maxHeight: "100px",
-      }}
+      height="80px"
     >
       <CssBaseline />
-      <AppBar
-        component="nav"
-        className="navbar"
-        sx={{
-          maxHeight: "100px",
-        }}
-      >
+      <AppBar component="nav" className="navbar" height="80px">
         <Toolbar
+          height="80px"
           sx={{
-            backgroundColor: "#ae3737",
-            maxHeight: "100px",
+            backgroundColor: "black",
             justifyContent: "space-between",
           }}
         >
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: "none" } }}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "#d9d9d966",
+              padding: "10px",
+              width: "70px",
+              height: "70px",
+              borderRadius: "10px",
+              display: { md: "none" },
+              margin: "0px",
+            }}
           >
-            <MenuIcon />
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ display: { md: "none" }, margin: "0px" }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
+          <Grid
+            container
+            direction="row"
+            height={"80px"}
+            alignItems="center"
+            justifyContent="center"
+            sx={{ display: { md: "none" } }}
+          >
             <CardMedia
               component="img"
               image="https://res.cloudinary.com/dfdzlzu79/image/upload/v1678920910/logotemporal.png"
               alt="logocel"
-              sx={{ maxHeight: "80px", marginLeft: "10px" }}
+              sx={{ height: "60px", width: "auto" }}
             />
-          </IconButton>
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ display: { xs: "none", md: "block" } }}
+          </Grid>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "#d9d9d966",
+              width: "255px",
+              borderRadius: "10px",
+              maxHeight: "68px",
+              display: { xs: "none", md: "block" },
+            }}
           >
             <CardMedia
               component="img"
               image="https://res.cloudinary.com/dfdzlzu79/image/upload/v1678920910/logotemporal.png"
               alt="logo"
               sx={{
-                maxHeight: "120px",
-                maxWidth: "25vw",
+                marginTop: "-32px",
+                marginInline: "8px",
+                paddingRight: "16px",
+                height: "auto",
+                width: "250px",
               }}
             />
-          </Typography>
+          </Box>
 
           <Grid
             container
             direction="row"
-            justifyContent="center"
+            height={"100%"}
             alignItems="center"
-            marginLeft={"15vw"}
+            justifyContent="center"
           >
             <Box
               sx={{
-                background: "#212121",
-                height: "80px",
+                background: "#d9d9d966",
+                height: "70px",
+                marginBlock: "5px",
                 width: "auto",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-around",
                 display: { xs: "none", md: "block" },
-
-                marginInline: "20px",
+                left: "65vw",
+                borderRadius: "10px",
               }}
             >
               <Grid
@@ -188,7 +233,9 @@ const NavBar = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                  <Link to="/">Home</Link>
+                  <Link to="/" className={classes.link}>
+                    Home
+                  </Link>
                 </Button>
                 <Button
                   sx={{
@@ -198,7 +245,9 @@ const NavBar = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                  <Link to="/ProductCatalog">Catalog</Link>
+                  <Link to="/ProductCatalog" className={classes.link}>
+                    Catalog
+                  </Link>
                 </Button>
                 <Button
                   sx={{
@@ -208,7 +257,9 @@ const NavBar = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                  <Link to="/ProductCreate">Create</Link>
+                  <Link to="/ProductCreate" className={classes.link}>
+                    Create
+                  </Link>
                 </Button>
                 <Button
                   sx={{
@@ -218,7 +269,9 @@ const NavBar = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                  <Link to="/Contact">Contact</Link>
+                  <Link to="/Contact" className={classes.link}>
+                    Contact
+                  </Link>
                 </Button>
               </Grid>
             </Box>
@@ -229,25 +282,39 @@ const NavBar = (props) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#21212121",
-              width: "25vw",
+              background: "#d9d9d966",
+              width: "255px",
               padding: "10px",
               borderRadius: "10px",
             }}
           >
             <ScreenSearchDesktopIcon
               sx={{
-                color: "action.active",
+                color: "white",
                 mr: 2,
                 my: 0.5,
                 marginTop: "18px",
               }}
             />
             <TextField
-              id="input-with-sx"
               label="Search..."
+              InputLabelProps={{ style: { color: "white" } }}
               variant="standard"
-              sx={{ width: "25vw" }}
+              inputProps={{
+                style: {
+                  color: "white",
+                  borderBottom: "2px solid white",
+                },
+              }}
+              sx={{
+                width: "255px",
+                "&:hover": {
+                  //borderBottom: "2px solid #ae3737",
+                },
+                "&:focus": {
+                  //borderBottom: "2px solid #ae3737",
+                },
+              }}
             />
           </Box>
         </Toolbar>
