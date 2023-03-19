@@ -1,0 +1,44 @@
+export const products = [
+    {
+        id:1,
+        image:'https://imgs.search.brave.com/0ucdvXMBzpUO4IW-Ybfrf0npy9mqAuXA2z-dcbB2pec/rs:fit:788:525:1/g:ce/aHR0cHM6Ly9rdXJz/YWdlbnQucnUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTIv/cGxhY2Vob2xkZXIt/Nzg4eDUyNS5wbmc',
+        name:'Buzo',
+        price:4000,
+    },
+    {
+        id:2,
+        image:'https://imgs.search.brave.com/0ucdvXMBzpUO4IW-Ybfrf0npy9mqAuXA2z-dcbB2pec/rs:fit:788:525:1/g:ce/aHR0cHM6Ly9rdXJz/YWdlbnQucnUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTIv/cGxhY2Vob2xkZXIt/Nzg4eDUyNS5wbmc',
+        name:'Remera',
+        price:4000,
+    },
+    {
+        id:3,
+        image:'https://imgs.search.brave.com/0ucdvXMBzpUO4IW-Ybfrf0npy9mqAuXA2z-dcbB2pec/rs:fit:788:525:1/g:ce/aHR0cHM6Ly9rdXJz/YWdlbnQucnUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTIv/cGxhY2Vob2xkZXIt/Nzg4eDUyNS5wbmc',
+        name:'Pantalon',
+        price:4000,
+    },
+    {
+        id:4,
+        image:'https://imgs.search.brave.com/0ucdvXMBzpUO4IW-Ybfrf0npy9mqAuXA2z-dcbB2pec/rs:fit:788:525:1/g:ce/aHR0cHM6Ly9rdXJz/YWdlbnQucnUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTIv/cGxhY2Vob2xkZXIt/Nzg4eDUyNS5wbmc',
+        name:'Jean',
+        price:4000,
+    },
+    {
+        id:5,
+        image:'https://imgs.search.brave.com/0ucdvXMBzpUO4IW-Ybfrf0npy9mqAuXA2z-dcbB2pec/rs:fit:788:525:1/g:ce/aHR0cHM6Ly9rdXJz/YWdlbnQucnUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTIv/cGxhY2Vob2xkZXIt/Nzg4eDUyNS5wbmc',
+        name:'Medias',
+        price:4000,
+    },
+    {
+        id:6,
+        image:'https://imgs.search.brave.com/0ucdvXMBzpUO4IW-Ybfrf0npy9mqAuXA2z-dcbB2pec/rs:fit:788:525:1/g:ce/aHR0cHM6Ly9rdXJz/YWdlbnQucnUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTIv/cGxhY2Vob2xkZXIt/Nzg4eDUyNS5wbmc',
+        name:'Zapatos',
+        price:4000,
+    },
+    {
+        id:7,
+        image:'https://imgs.search.brave.com/0ucdvXMBzpUO4IW-Ybfrf0npy9mqAuXA2z-dcbB2pec/rs:fit:788:525:1/g:ce/aHR0cHM6Ly9rdXJz/YWdlbnQucnUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTIv/cGxhY2Vob2xkZXIt/Nzg4eDUyNS5wbmc',
+        name:'Buzo con capucha',
+        price:4000,
+    },
+]
