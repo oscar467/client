@@ -8,7 +8,7 @@ const Footer = () => {
       <section class='section one'> 
         <ul> 
           <div> Sobre Cool Style</div>
-            <div>
+            <div children='one'>
               <Link to="/Tienda">Tienda</Link>
             </div>
 

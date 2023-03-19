@@ -5,8 +5,9 @@ footer {
     background-color: whitesmoke;
     position: absolute;
     bottom: 0;
-   
+    text-decoration: none;
 }
+
 
 footer section {
     display: flex;
@@ -18,5 +19,5 @@ footer section {
 
 ul{
     list-style: none;
-    text-decoration:none;
+    
 }
