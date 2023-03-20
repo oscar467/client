@@ -1,63 +1,35 @@
+import { Stack } from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
-import Slider from "react-slick";
-import banner1 from "../../assets/images/banners/banner1.jpg";
-import banner2 from "../../assets/images/banners/banner2.jpg";
-import banner3 from "../../assets/images/banners/banner3.jpg";
-import banner4 from "../../assets/images/banners/banner4.jpg";
-import banner5 from "../../assets/images/banners/banner5.jpg";
 
 const Banner = () => {
-  const imagesBanner = [
-    {
-      photo: banner1,
-      label: "image1",
-    },
-    {
-      photo: banner2,
-      label: "image2",
-    },
-    {
-      photo: banner3,
-      label: "image3",
-    },
-    {
-      photo: banner4,
-      label: "image4",
-    },
-    {
-      photo: banner5,
-      label: "image5",
-    },
-  ];
-  const settingsBanner = {
-    dots: false,
-    infinite: true,
-    speed: 3000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    slickNext: false,
-    slickPrevious: false,
-    swipe: true,
-  };
   return (
-    <Slider display="flex" {...settingsBanner}>
-      {imagesBanner.map((step) => (
-        <div key={step.label}>
-          <img
-            src={step.photo}
-            alt={step.label}
-            style={{
-              borderRadius: "0px",
-              height: "350px",
-              display: "block",
-              overflow: "hidden",
-              width: "100%",
-              marginBottom: "6rem",
-            }}
-          />
-        </div>
-      ))}
-    </Slider>
+    <div style={{ width: "100%", position: "relative" }}>
+      <img
+        src={
+          "https://res.cloudinary.com/dfdzlzu79/image/upload/v1679065110/carrousel1.png"
+        }
+        alt={"banner"}
+        style={{ width: "100%" }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          color: "#f5b727cc",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          background: "#d9d9d966",
+          borderRadius: "10px",
+        }}
+      >
+        <h1>Summer sales</h1>
+        <h2>Up to 50% off</h2>
+      </div>
+    </div>
   );
 };
 
