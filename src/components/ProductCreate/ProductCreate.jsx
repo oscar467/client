@@ -1,12 +1,25 @@
-import React from "react";
-import { useState } from "react";
-
+import React, { useEffect } from "react";
+import { useState} from "react"; 
+import {getAlCategories} from "../../redux/actions/categoriesActions";
+import {createProduct} from "../../redux/actions/productsActions"
+import {useDispatch,useSelector} from "react-redux";
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
 
 const onlyNumber= /^\d+$/;
 const isUrl= /^https?:.+.(jpg|jpeg|png|webp|avif|gif|svg)$/;
 const inputEmpty= /^\s+$/;
 
 const ProductCreate = () => {
+
+  const sizes=["S", "M", "L", "XL"]
+
+  const dispatch=useDispatch()
+  const categories= useSelector((state)=>state.categories)
+
+   useEffect (()=>{
+    dispatch(getAlCategories());
+  },[dispatch])
 
    const [input,setInput]= useState({
 
@@ -18,8 +31,11 @@ const ProductCreate = () => {
     stock:"",
     freeShopping:"",
     discount:"",
-    Category:[]
+    categories:[]
+
+    
   });
+  
 
   const [error,setError]= useState({
 
@@ -31,12 +47,12 @@ const ProductCreate = () => {
     stock:"",
     freeShopping:"",
     discount:"",
-    Category:[]
+    categories:[]
   });
 
   function validate ({name_product,image,price,description,stock,freeShopping,discount}){
     let errors={}
-    // validate name
+   
     if(!name_product){
         errors.name_product = "enter a name"
     }  else if(inputEmpty.test(name_product)){ 
@@ -54,7 +70,7 @@ const ProductCreate = () => {
     }
 
     if(!price){
-      errors.maxHeight= "enter a price"
+      errors.price= "enter a price"
   }
    else if(inputEmpty.test(price)){
       errors.price="the input is empty"
@@ -62,7 +78,7 @@ const ProductCreate = () => {
       errors.price="you must enter a number"
   }
   if(!stock){
-    errors.maxHeight= "enter a stock"
+    errors.stock= "enter a stock"
 }
  else if(inputEmpty.test(stock)){
     errors.stock="the input is empty"
@@ -71,7 +87,7 @@ const ProductCreate = () => {
 }
 
 if(!discount){
-  errors.maxHeight= "enter a discount"
+  errors.discount= "enter a discount"
 }
 else if(inputEmpty.test(discount)){
   errors.discount="the input is empty"
@@ -94,6 +110,54 @@ else if(inputEmpty.test(discount)){
 
 }
 
+function handleSelect1(e) {
+  if (input.size.find((t) => t.id === e.target.value)) {
+    console.log({ input });
+    alert("Already in the list");
+  } else {
+    setInput({
+      ...input,
+      size: [
+        ...input.size,
+        e.target.value
+        
+      ],
+    });
+  }
+} 
+function handleSelect(e) {
+  if (input.categories.find((t) => t.id === e.target.value)) {
+    console.log({ input });
+    alert("Already in the list");
+  } else {
+    setInput({
+      ...input,
+      categories: [
+        ...input.categories,
+        e.target.value
+        
+      ],
+    });
+  }
+}
+
+function handleSubmit(e){
+  e.preventDefault()
+  dispatch(createProduct(input))
+  console.log(input)
+  alert("you have created a Product")
+  setInput({
+    name_product:"",
+    image:"",
+    price:"",
+    description:"",
+    size:[],
+    stock:"",
+    freeShopping:"",
+    discount:"",
+    categories:[]
+       })}
+
   function handleChange(e) {
     setInput({
         ...input,
@@ -109,12 +173,12 @@ else if(inputEmpty.test(discount)){
     
     <div>
         <h1>CREATE NEW PRODUCT</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Name Product:</label>
           <input
-          type= "text"
-          name="name_Product"
+          type="text"
+          name="name_product"
           placeholder="Name Product"
           value={input.name_product}
           onChange={handleChange}
@@ -145,9 +209,17 @@ else if(inputEmpty.test(discount)){
         </div>
         <div>
           <label>Size:</label>
-          <select>
-         
-          </select>
+          <select
+           onChange={(e) => handleSelect1(e)}
+           >
+            
+              {sizes?.map((size) => (
+                <option value={size} key={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+
         </div>
         <div>
           <label>image:</label>
@@ -164,8 +236,8 @@ else if(inputEmpty.test(discount)){
           <label>Stock:</label>
           <input
           type="text"
-          name="stoke"
-          placeholder="stoke"
+          name="stock"
+          placeholder="stock"
           value={input.stock}
           onChange={handleChange}
           />
@@ -194,15 +266,25 @@ else if(inputEmpty.test(discount)){
           {error.discount?<p>{error.discount}</p>:null}
         </div>
         <div>
+        <div>
           <label>Category:</label>
-          <select>
-          
-          </select>
+          <select
+           onChange={(e) => handleSelect(e)}
+           >
+              {categories?.map((categories) => (
+                <option  value={categories.id} key={categories.id}>
+                  {categories.id}
+                 
+                </option>
+              ))}
+            </select>
+        </div>
         </div>
 
         <input
         type="submit"
         value= "Create Product"
+        disabled={Object.entries(error).length===0? false:true}
         />
       </form>
     </div>
