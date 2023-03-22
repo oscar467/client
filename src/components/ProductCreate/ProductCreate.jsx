@@ -106,7 +106,6 @@ else if(inputEmpty.test(discount)){
     
     return errors;
 
-
 }
 
 function handleSelect1(e) {
