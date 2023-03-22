@@ -3,8 +3,10 @@ import { useState} from "react";
 import {getAlCategories} from "../../redux/actions/categoriesActions";
 import {createProduct} from "../../redux/actions/productsActions"
 import {useDispatch,useSelector} from "react-redux";
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
 
 const onlyNumber= /^\d+$/;
 const isUrl= /^https?:.+.(jpg|jpeg|png|webp|avif|gif|svg)$/;
@@ -15,7 +17,7 @@ const ProductCreate = () => {
   const sizes=["S", "M", "L", "XL"]
 
   const dispatch=useDispatch()
-  const categories= useSelector((state)=>state.categories)
+  const categories= useSelector((state)=>state.categoriesR.categories)
 
    useEffect (()=>{
     dispatch(getAlCategories());
@@ -29,7 +31,7 @@ const ProductCreate = () => {
     description:"",
     size:[],
     stock:"",
-    freeShopping:"",
+    // freeShopping:"",
     discount:"",
     categories:[]
 
@@ -45,12 +47,12 @@ const ProductCreate = () => {
     description:"",
     size:[],
     stock:"",
-    freeShopping:"",
+    // freeShopping:"",
     discount:"",
     categories:[]
   });
 
-  function validate ({name_product,image,price,description,stock,freeShopping,discount}){
+  function validate ({name_product,image,price,description,stock,discount}){
     let errors={}
    
     if(!name_product){
@@ -63,11 +65,11 @@ const ProductCreate = () => {
     }  else if(inputEmpty.test(description)){ 
       errors.description= "the input is empty"
      }
-   if(!freeShopping){
-    errors.freeShopping = "enter a freeShopping"
-    }  else if(inputEmpty.test(freeShopping)){ 
-    errors.freeShopping= "the input is empty"
-    }
+  //  if(!freeShopping){
+  //   errors.freeShopping = "enter a freeShopping"
+  //   }  else if(inputEmpty.test(freeShopping)){ 
+  //   errors.freeShopping= "the input is empty"
+  //   }
 
     if(!price){
       errors.price= "enter a price"
@@ -153,9 +155,9 @@ function handleSubmit(e){
     description:"",
     size:[],
     stock:"",
-    freeShopping:"",
+    // freeShopping:"",
     discount:"",
-    categories:[]
+    categoryId:"",
        })}
 
   function handleChange(e) {
@@ -170,80 +172,96 @@ function handleSubmit(e){
     }
   return (
 
+    <Box 
+    component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      >
     
-    <div>
         <h1>CREATE NEW PRODUCT</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name Product:</label>
-          <input
+        <TextField
+          required
+          id="name_product"
+          label="Name Product:"
           type="text"
           name="name_product"
           placeholder="Name Product"
           value={input.name_product}
           onChange={handleChange}
-          />
+        />
+          
           {error.name_product?<p>{error.name_product}</p>:null}
         </div>
         <div>
-          <label>Price:</label>
-          <input
+        <TextField
+          required
+          id="price"
+          label="Price"
           type="text"
           name="price"
           placeholder="Price"
           value={input.price}
           onChange={handleChange}
-          />
+        />
           {error.price?<p>{error.price}</p>:null}
         </div>
         <div>
-          <label>Description:</label>
-          <input
+        <TextField
+          required
+          id="description"
+          label="Description"
           type="text"
           name="description"
           placeholder="Description"
           value={input.description}
           onChange={handleChange}
-          />
+        />
           {error.price?<p>{error.price}</p>:null}
         </div>
         <div>
-          <label>Size:</label>
-          <select
+        <TextField
+          select
+          label="Size"
            onChange={(e) => handleSelect1(e)}
            >
+              { 
+              sizes?.map((size) => (<MenuItem value={size} key={size}>{size}</MenuItem> 
+              ))} 
             
-              {sizes?.map((size) => (
-                <option value={size} key={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-
+            </TextField>
         </div>
         <div>
-          <label>image:</label>
-          <input
+        <TextField
+          required
+          id="image"
+          label="image"
           type="text"
           name="image"
           placeholder="Url of image"
           value={input.image}
           onChange={handleChange}
-          />
+        />
           {error.image?<p>{error.image}</p>:null}
         </div>
         <div>
-          <label>Stock:</label>
-          <input
+        <TextField
+          required
+          id="stock"
+          label="Stock"
           type="text"
           name="stock"
           placeholder="stock"
           value={input.stock}
           onChange={handleChange}
-          />
+        />
           {error.stock?<p>{error.stock}</p>:null}
         </div>
-        <div>
+        {/* <div>
           <label>FreeShopping::</label>
           <input
           type="text"
@@ -253,41 +271,54 @@ function handleSubmit(e){
           onChange={handleChange}
           />
           {error.freeShopping?<p>{error.freeShopping}</p>:null}
-        </div>
+        </div> */}
         <div>
-          <label>Discount:</label>
-          <input
+        <TextField 
+          required
+          id="discount"
+          label="Discount"
           type="text"
           name="discount"
           placeholder="discount"
           value={input.discount}
           onChange={handleChange}
-          />
+        />
+          
           {error.discount?<p>{error.discount}</p>:null}
         </div>
         <div>
-        <div>
-          <label>Category:</label>
-          <select
-           onChange={(e) => handleSelect(e)}
+        <div><TextField
+          select
+          label="Category"
+          onChange={(e) => handleSelect(e)}
            >
               {categories?.map((categories) => (
-                <option  value={categories.id} key={categories.id}>
-                  {categories.id}
+                <MenuItem  value={categories.name_category} key={categories.name_category}>
+                  {categories.name_category}
                  
-                </option>
-              ))}
-            </select>
+                </MenuItem>
+              ))} 
+            </TextField>
         </div>
         </div>
 
-        <input
+        <Button
+        variant="submit"
         type="submit"
         value= "Create Product"
         disabled={Object.entries(error).length===0? false:true}
-        />
+        > Create Product
+        </Button>
+
+        {/* <input
+         type="submit"
+         value= "Create Product"
+         disabled={Object.entries(error).length===0? false:true}
+        /> */}
       </form>
-    </div>
+    
+    </Box>
+    
   );
 };
 
