@@ -15,11 +15,12 @@ const ProductCreate = () => {
   const sizes=["S", "M", "L", "XL"]
 
   const dispatch=useDispatch()
-  const categories= useSelector((state)=>state.categories)
+  const categories= useSelector((state)=>state.categoriesR.categories)
 
    useEffect (()=>{
     dispatch(getAlCategories());
   },[dispatch])
+
 
    const [input,setInput]= useState({
 
@@ -29,9 +30,9 @@ const ProductCreate = () => {
     description:"",
     size:[],
     stock:"",
-    freeShopping:"",
+    // freeShopping:"",
     discount:"",
-    categories:[]
+    CategoryId:""
 
     
   });
@@ -45,9 +46,9 @@ const ProductCreate = () => {
     description:"",
     size:[],
     stock:"",
-    freeShopping:"",
+    // freeShopping:"",
     discount:"",
-    categories:[]
+    CategoryId:""
   });
 
   function validate ({name_product,image,price,description,stock,freeShopping,discount}){
@@ -63,11 +64,11 @@ const ProductCreate = () => {
     }  else if(inputEmpty.test(description)){ 
       errors.description= "the input is empty"
      }
-   if(!freeShopping){
-    errors.freeShopping = "enter a freeShopping"
-    }  else if(inputEmpty.test(freeShopping)){ 
-    errors.freeShopping= "the input is empty"
-    }
+  //  if(!freeShopping){
+  //   errors.freeShopping = "enter a freeShopping"
+  //   }  else if(inputEmpty.test(freeShopping)){ 
+  //   errors.freeShopping= "the input is empty"
+  //   }
 
     if(!price){
       errors.price= "enter a price"
@@ -94,8 +95,6 @@ else if(inputEmpty.test(discount)){
 }else if(!onlyNumber.test(discount)){
   errors.discount="you must enter a number"
 }
-   
-  
     if(!image){
         errors.image= "enter a Url"
     }
@@ -106,7 +105,6 @@ else if(inputEmpty.test(discount)){
     }
     
     return errors;
-
 
 }
 
@@ -125,26 +123,38 @@ function handleSelect1(e) {
     });
   }
 } 
-function handleSelect(e) {
-  if (input.categories.find((t) => t.id === e.target.value)) {
-    console.log({ input });
-    alert("Already in the list");
-  } else {
-    setInput({
-      ...input,
-      categories: [
-        ...input.categories,
-        e.target.value
+// function handleSelect(e) {
+//   if (input.categoryId.find((t) => t.id === e.target.value)) {
+//     console.log({ input });
+//     alert("Already in the list");
+//   } else {
+//     setInput({
+//       ...input,
+//       categoryId: [
+//         ...input.categoryId,
+//         e.target.value
         
-      ],
-    });
-  }
+//       ],
+//     });
+//   }
+// }
+
+function handleSelect(e){
+  setInput({
+          ...input,
+          CategoryId: 
+            e.target.value
+        });
+
 }
+
 
 function handleSubmit(e){
   e.preventDefault()
   dispatch(createProduct(input))
+  
   console.log(input)
+ 
   alert("you have created a Product")
   setInput({
     name_product:"",
@@ -153,10 +163,11 @@ function handleSubmit(e){
     description:"",
     size:[],
     stock:"",
-    freeShopping:"",
+    // freeShopping:"",
     discount:"",
-    categories:[]
-       })}
+    CategoryId:""
+       })
+      }
 
   function handleChange(e) {
     setInput({
@@ -243,7 +254,7 @@ function handleSubmit(e){
           />
           {error.stock?<p>{error.stock}</p>:null}
         </div>
-        <div>
+        {/* <div>
           <label>FreeShopping::</label>
           <input
           type="text"
@@ -253,7 +264,7 @@ function handleSubmit(e){
           onChange={handleChange}
           />
           {error.freeShopping?<p>{error.freeShopping}</p>:null}
-        </div>
+        </div> */}
         <div>
           <label>Discount:</label>
           <input
@@ -273,7 +284,7 @@ function handleSubmit(e){
            >
               {categories?.map((categories) => (
                 <option  value={categories.id} key={categories.id}>
-                  {categories.id}
+                  {categories.name_category}
                  
                 </option>
               ))}

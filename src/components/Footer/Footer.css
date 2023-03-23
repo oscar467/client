@@ -5,6 +5,8 @@ footer {
     background-color: whitesmoke;
     bottom: 0;
     text-decoration: none;
+    position: "absolute";
+    bottom: 0
 }
 
 
@@ -13,10 +15,10 @@ footer section {
     width: 50%;
     justify-content: center;
     align-items: center;
-   
+
 }
 
-ul{
+ul {
     list-style: none;
-    
+
 }

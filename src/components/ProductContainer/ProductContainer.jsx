@@ -1,12 +1,10 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import { Container } from "@mui/system";
 import React from "react";
-import { products } from "../../data/index";
 import Product from "../Product/Product";
 
-const ProductContainer = () => {
-  console.log(products);
-  const renderProducts = products?.map((product) => (
+const ProductContainer = (products) => {
+  const renderProducts = products.products?.map((product) => (
     <Grid
       key={product.id}
       xs={2}
