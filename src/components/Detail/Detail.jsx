@@ -73,6 +73,11 @@ const Detail = () => {
             <Typography variant="h4" className={classes.title}>
               Name:
               {myProduct.name_product ? myProduct.name_product : <Loading />}
+              {myProduct.name_product !== undefined ? (
+                myProduct.name_product
+              ) : (
+                <Loading />
+              )}
             </Typography>
             <Typography variant="h6" className={classes.price}>
               Price: ${myProduct.price ? myProduct.price : <Loading />}
@@ -83,7 +88,7 @@ const Detail = () => {
             </Typography>
             <Typography variant="h6" className={classes.description}>
               Category:
-              {myProduct.Category.name_category ? (
+              {myProduct.Category.name_category !== undefined ? (
                 myProduct.Category.name_category
               ) : (
                 <Loading />
