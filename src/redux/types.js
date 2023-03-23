@@ -1,9 +1,10 @@
 export const typesCategories = {
-    getAlCategories: 'GET_ALL_CATEGORIES'
-}
+  getAlCategories: "GET_ALL_CATEGORIES",
+};
 
-
-    export const typesProducts= {
-        createProduct: 'POST_PRODUCT',
-        getAllProducts: 'GET_ALL_PRODUCTS'
-    }
+export const typesProducts = {
+  createProduct: "POST_PRODUCT",
+  getAllProducts: "GET_ALL_PRODUCTS",
+  getDetails: "GET_DETAILS",
+  filterByCategory: "FILTER_BY_CATEGORY",
+};
