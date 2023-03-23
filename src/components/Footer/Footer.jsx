@@ -5,7 +5,7 @@ import './Footer.css'
 const Footer = () => {
   return (
     <footer>
-      <section class='section one'> 
+      <section className='section one'>
         <ul> 
           <div> Sobre Cool Style</div>
             <div children='one'>
@@ -18,7 +18,7 @@ const Footer = () => {
         </ul>
       </section>
 
-      <section class='section two'> 
+      <section className='section two'>
         <ul> 
           <div> Politicas</div>
           <div>
@@ -36,7 +36,7 @@ const Footer = () => {
         </ul>
       </section>
 
-      <section class='section three'> 
+      <section className='section three'>
         <ul> 
           <div> Atención al Cliente</div>
 

@@ -9,17 +9,10 @@ const ContainerFilters = () => {
     <Box
       sx={{
         mb: 2,
-        width: "100%",
         height: 50,
-        ml: 4,
-        display: { xs: "none", md: "block" },
-        display: "flex",
         gap: "20px",
       }}
     >
-      <Typography variant="h5" sx={{ mb: 2, fontFamily: "Radley, serif" }}>
-        Filtrar por:{" "}
-      </Typography>
       <FilterByCategory />
       <FilterBySizes />
     </Box>

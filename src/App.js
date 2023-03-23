@@ -15,6 +15,8 @@ import Envios from "./components/Footer/envios";
 import PreguntasFrecuentes from "./components/Footer/preguntasfrecuentes";
 import Contactanos from "./components/Footer/contactanos";
 import Detail from "./components/Detail/Detail";
+import ContainerFormRegisterUser from "./components/RegisterUser/ContainerFormRegisterUser";
+import ContainerLogin from "./components/FormLogin/ContainerLogin";
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
         <Route path="/Envios" element={<Envios />} />
         <Route path="/PreguntasFrecuentes" element={<PreguntasFrecuentes />} />
         <Route path="/Contáctanos" element={<Contactanos />} />
+          <Route path="/register-user" element={<ContainerFormRegisterUser/>} />
+          <Route path="/login" element={<ContainerLogin/>} />
       </Routes>
     </div>
   );
