@@ -6,7 +6,7 @@ import ProductCatalog from "./components/ProductCatalog/ProductCatalog";
 import ProductCreate from "./components/ProductCreate/ProductCreate";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import Tienda from "./components/Footer/tienda";
+import QuienesSomos from "./components/Footer/quienessomos";
 import Promociones from "./components/Footer/promociones";
 import TerminosyCondiciones from "./components/Footer/terminosycondiciones";
 import CambiosyDevoluciones from "./components/Footer/cambiosydevoluciones";
@@ -14,7 +14,10 @@ import Confidencialidad from "./components/Footer/confidencialidad";
 import Envios from "./components/Footer/envios";
 import PreguntasFrecuentes from "./components/Footer/preguntasfrecuentes";
 import Contactanos from "./components/Footer/contactanos";
+import MetodosdePago from "./components/Footer/metodosdepago";
 import Detail from "./components/Detail/Detail";
+import ContainerFormRegisterUser from "./components/RegisterUser/ContainerFormRegisterUser";
+import ContainerLogin from "./components/FormLogin/ContainerLogin";
 
 function App() {
   return (
@@ -34,20 +37,18 @@ function App() {
 
       <Footer />
       <Routes>
-        <Route path="/Tienda" element={<Tienda />} />
+        <Route path="/QuienesSomos" element={<QuienesSomos />} />
         <Route path="/Promociones" element={<Promociones />} />
-        <Route
-          path="/TerminosyCondiciones"
-          element={<TerminosyCondiciones />}
-        />
-        <Route
-          path="/CambiosyDevoluciones"
-          element={<CambiosyDevoluciones />}
-        />
+        <Route path="/MetodosdePago" element={<MetodosdePago />} />
+        <Route path="/TerminosyCondiciones"element={<TerminosyCondiciones />}/>
+        <Route path="/CambiosyDevoluciones"element={<CambiosyDevoluciones />}/>
         <Route path="/Confidencialidad" element={<Confidencialidad />} />
         <Route path="/Envios" element={<Envios />} />
         <Route path="/PreguntasFrecuentes" element={<PreguntasFrecuentes />} />
-        <Route path="/Contáctanos" element={<Contactanos />} />
+        <Route path="/Contactanos" element={<Contactanos />} />
+          <Route path="/register-user" element={<ContainerFormRegisterUser/>} />
+          <Route path="/login" element={<ContainerLogin/>} />
+
       </Routes>
     </div>
   );
