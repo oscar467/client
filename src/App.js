@@ -45,13 +45,10 @@ function App() {
         <Route path="/Confidencialidad" element={<Confidencialidad />} />
         <Route path="/Envios" element={<Envios />} />
         <Route path="/PreguntasFrecuentes" element={<PreguntasFrecuentes />} />
-<<<<<<< HEAD
         <Route path="/Contactanos" element={<Contactanos />} />
-=======
-        <Route path="/Contáctanos" element={<Contactanos />} />
           <Route path="/register-user" element={<ContainerFormRegisterUser/>} />
           <Route path="/login" element={<ContainerLogin/>} />
->>>>>>> 60b7d4b5d2c0e86ffd919bc589a0a7a3cc3d8c92
+
       </Routes>
     </div>
   );
