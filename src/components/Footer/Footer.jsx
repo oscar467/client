@@ -5,7 +5,11 @@ import './Footer.css'
 const Footer = () => {
   return (
     <footer>
+<<<<<<< HEAD
       <section class='sectionone'> 
+=======
+      <section className='section one'>
+>>>>>>> 60b7d4b5d2c0e86ffd919bc589a0a7a3cc3d8c92
         <ul> 
           <div class='one'> Sobre Cool Style</div>
             <div>
@@ -22,7 +26,11 @@ const Footer = () => {
         </ul>
       </section>
 
+<<<<<<< HEAD
       <section class='sectiontwo'> 
+=======
+      <section className='section two'>
+>>>>>>> 60b7d4b5d2c0e86ffd919bc589a0a7a3cc3d8c92
         <ul> 
           <div class='two'> Politicas</div>
           <div>
@@ -40,7 +48,11 @@ const Footer = () => {
         </ul>
       </section>
 
+<<<<<<< HEAD
       <section class='sectionthree'> 
+=======
+      <section className='section three'>
+>>>>>>> 60b7d4b5d2c0e86ffd919bc589a0a7a3cc3d8c92
         <ul> 
           <div class= 'three'>Atención al Cliente</div>
 

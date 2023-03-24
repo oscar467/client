@@ -7,4 +7,11 @@ export const typesProducts = {
   getAllProducts: "GET_ALL_PRODUCTS",
   getDetails: "GET_DETAILS",
   filterByCategory: "FILTER_BY_CATEGORY",
+  filterBySizes: 'FILTER_BY_SIZES',
+  orderByName: 'ORDER_BY_NAME'
 };
+
+export const typesUsers = {
+  createUser: 'POST_USER',
+  login: 'LOGIN'
+}

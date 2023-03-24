@@ -295,7 +295,7 @@ function handleSubmit(e){
         <input
         type="submit"
         value= "Create Product"
-        disabled={Object.entries(error).length===0? false:true}
+        disabled={Object.entries(error).length !== 0}
         />
       </form>
     </div>

@@ -1,52 +1,76 @@
-import React, { useState } from "react";
-import ProductContainer from "../ProductContainer/ProductContainer";
+import React from 'react';
+import {Box, Grid, Typography} from "@mui/material";
 import ContainerFilters from "../ComponentsFilters/ContainerFilters";
-import { Box, Breadcrumbs, Container, Divider, Stack } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
-import Grid from "@mui/material/Unstable_Grid2";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllProducts,
-  getProductsCategory,
-} from "../../redux/actions/productsActions";
-import { useEffect } from "react";
-import Loading from "../Loading/Loading";
+import {Container} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllProducts}  from '../../redux/actions/productsActions';
+import ProductContainer from "../ProductContainer/ProductContainer";
+import SortBy from "../SortBy/SortBy";
 
 const ProductCatalog = () => {
-  const dispatch = useDispatch();
-  const params = useParams();
-  const [category, setCategory] = useState(params.category);
-  const allProducts = useSelector((state) => state.productsReducer.products);
-  const productsCategory = useSelector(
-    (state) => state.productsReducer.productsCategory
-  );
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    //dispatch(getProductsCategory(category));
-    dispatch(getAllProducts()).then(setLoading(false));
-  }, [category]);
-  return (
-    <>
-      <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <Box sx={{ width: "90%", margin: "2rem 0 6rem 0" }}>
-          <Stack direction={"column"} spacing={6}>
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link to="/">Home</Link>
-              <Link to="/ProductCatalog">Product Catalog</Link>
-            </Breadcrumbs>
-            <ContainerFilters />
+    const dispatch = useDispatch()
+    const allProducts = useSelector(state => state.productsReducer.products);
 
-            <Divider orientation="horizontal" flexItem />
-            {loading ? (
-              <Loading /*productsCategory[0].Products*/ />
-            ) : (
-              <ProductContainer products={allProducts} />
-            )}
-          </Stack>
-        </Box>
-      </Box>
-    </>
-  );
+    React.useEffect(() => {
+        dispatch(getAllProducts())
+    },[])
+
+    return (
+        <>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: {
+                        xs: "space-between",
+                        lg: "flex-end",
+                        md: "flex-end",
+                    },
+                    m: 3,
+                }}
+            >
+                <SortBy />
+            </Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: {
+                        xs: "space-between",
+                        lg: "flex-end",
+                        md: "flex-end",
+                    },
+                    fontFamily: "Radley, serif",
+                    m: 3,
+                }}
+            >
+                <Box
+                    sx={{
+                        fontFamily: "Radley, serif",
+                        mb: 2,
+                        width: 250,
+                        height: 500,
+                        ml: 4,
+                        display: { xs: "none", md: "block" },
+                    }}
+                >
+                    <Typography variant="h5" sx={{ mb: 2, fontFamily: "Radley, serif" }}>
+                        Filtrar por:{" "}
+                    </Typography>
+                    <ContainerFilters />
+                </Box>
+                <Container maxWidth="lg">
+                    <Grid
+                        maxWidth="lg"
+                        container
+                        sx={{gap: 2}}
+                        columns={{ xs: 2, sm: 2, md: 10, lg: 12.4 }}
+                    >
+                        <ProductContainer products={allProducts} />
+                    </Grid>
+                </Container>
+            </Box>
+            
+        </>
+    );
 };
 
 export default ProductCatalog;

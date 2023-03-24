@@ -16,6 +16,8 @@ import PreguntasFrecuentes from "./components/Footer/preguntasfrecuentes";
 import Contactanos from "./components/Footer/contactanos";
 import MetodosdePago from "./components/Footer/metodosdepago";
 import Detail from "./components/Detail/Detail";
+import ContainerFormRegisterUser from "./components/RegisterUser/ContainerFormRegisterUser";
+import ContainerLogin from "./components/FormLogin/ContainerLogin";
 
 function App() {
   return (
@@ -43,7 +45,13 @@ function App() {
         <Route path="/Confidencialidad" element={<Confidencialidad />} />
         <Route path="/Envios" element={<Envios />} />
         <Route path="/PreguntasFrecuentes" element={<PreguntasFrecuentes />} />
+<<<<<<< HEAD
         <Route path="/Contactanos" element={<Contactanos />} />
+=======
+        <Route path="/Contáctanos" element={<Contactanos />} />
+          <Route path="/register-user" element={<ContainerFormRegisterUser/>} />
+          <Route path="/login" element={<ContainerLogin/>} />
+>>>>>>> 60b7d4b5d2c0e86ffd919bc589a0a7a3cc3d8c92
       </Routes>
     </div>
   );
