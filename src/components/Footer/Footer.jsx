@@ -5,46 +5,50 @@ import './Footer.css'
 const Footer = () => {
   return (
     <footer>
-      <section class='section one'> 
+      <section class='sectionone'> 
         <ul> 
-          <div> Sobre Cool Style</div>
-            <div children='one'>
-              <Link to="/Tienda">Tienda</Link>
+          <div class='one'> Sobre Cool Style</div>
+            <div>
+              <Link id='linkone' to="/QuienesSomos">¿Quienes Somos?</Link>
             </div>
 
             <div>
-              <Link to="/Promociones">Promociones</Link>
+              <Link id='linkone' to="/Promociones">Promociones</Link>
+            </div>
+
+            <div>
+              <Link id='linkone' to="/MetodosdePago">Metodos de Pago</Link>
             </div>
         </ul>
       </section>
 
-      <section class='section two'> 
+      <section class='sectiontwo'> 
         <ul> 
-          <div> Politicas</div>
+          <div class='two'> Politicas</div>
           <div>
-            <Link to="/TerminosyCondiciones">Términos y condiciones</Link>
+            <Link id='linkone' to="/TerminosyCondiciones">Términos y condiciones</Link>
           </div>
           <div>
-            <Link to="/CambiosyDevoluciones">Cambios y Devoluciones</Link>
+            <Link id='linkone' to="/CambiosyDevoluciones">Cambios y Devoluciones</Link>
           </div>
           <div>
-            <Link to="/Confidencialidad">Confidencialidad</Link>
+            <Link id='linkone' to="/Confidencialidad">Confidencialidad</Link>
           </div>
           <div>
-            <Link to="/Envios">Envíos</Link>
+            <Link id='linkone' to="/Envios">Envíos</Link>
           </div>
         </ul>
       </section>
 
-      <section class='section three'> 
+      <section class='sectionthree'> 
         <ul> 
-          <div> Atención al Cliente</div>
+          <div class= 'three'>Atención al Cliente</div>
 
          <div>
-            <Link to="/PreguntasFrecuentes">Preguntas Frecuentes</Link>
+            <Link id='linkone' to="/PreguntasFrecuentes">Preguntas Frecuentes</Link>
           </div>
           <div>
-            <Link to="/Contactanos">Contáctanos</Link>
+            <Link id='linkone' to="/Contactanos">Contáctanos</Link>
           </div>
          
         </ul>
