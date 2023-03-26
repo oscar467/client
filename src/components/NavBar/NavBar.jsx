@@ -187,7 +187,7 @@ const NavBar = (props) => {
             <CardMedia
               component="img"
               image="https://res.cloudinary.com/dfdzlzu79/image/upload/v1678920910/logotemporal.png"
-              alt="logo"
+              alt="Logo"
               sx={{
                 marginTop: "-32px",
                 marginInline: "8px",

@@ -1,0 +1,17 @@
+[
+{
+    id:1,
+    image:'https://fdscol.vtexassets.com/assets/vtex.file-manager-graphql/images/0890be30-f9dc-4ce4-9756-12842df413b8___b1a2abf7961735293ee971b98bda1471.jpg',
+    name:'Chaqueta',
+    
+},
+{
+    id:2,
+    image:'https://fdscol.vtexassets.com/assets/vtex.file-manager-graphql/images/8a17643c-9b05-47ae-8a05-520072808957___3b22d4392a22503fba75bb5054e02cd8.jpg',
+    name:'Sweaters',
+    
+},
+
+
+
+]

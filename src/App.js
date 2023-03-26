@@ -20,11 +20,12 @@ import ContainerFormRegisterUser from "./components/RegisterUser/ContainerFormRe
 import ContainerLogin from "./components/FormLogin/ContainerLogin";
 
 
+
 function App() {
   return (
     <div>
       <NavBar />
-     
+      
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/ProductCatalog" element={<ProductCatalog />} />
