@@ -87,12 +87,7 @@ const Detail = () => {
               {myProduct.description ? myProduct.description : <Loading />}
             </Typography>
             <Typography variant="h6" className={classes.description}>
-              Category:
-              {myProduct.Category.name_category !== undefined ? (
-                myProduct.Category.name_category
-              ) : (
-                <Loading />
-              )}
+              Category: {myProduct.Category?.name_category}
             </Typography>
             <Button
               variant="contained"
