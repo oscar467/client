@@ -5,8 +5,6 @@ import Home from "./components/Home/Home";
 import ProductCatalog from "./components/ProductCatalog/ProductCatalog";
 import ProductCreate from "./components/ProductCreate/ProductCreate";
 import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
-import Tienda from "./components/Footer/tienda";
 import Promociones from "./components/Footer/promociones";
 import TerminosyCondiciones from "./components/Footer/terminosycondiciones";
 import CambiosyDevoluciones from "./components/Footer/cambiosydevoluciones";
@@ -19,9 +17,10 @@ import ContainerFormRegisterUser from "./components/RegisterUser/ContainerFormRe
 import ContainerLogin from "./components/FormLogin/ContainerLogin";
 import {currentUser} from './redux/actions/userActions';
 import {useDispatch} from "react-redux";
-import DashboardMain from "./components/Dashboard/DashboardMain";
 import Layout from "./components/Layout/Layout";
 import LayoutDashBoard from "./components/Layout/LayoutDashBoard";
+
+
 
 function App() {
     const dispatch = useDispatch();
