@@ -40,7 +40,6 @@ function App() {
                   <Route path="/Contáctanos" element={<Contactanos />} />
                   <Route path="/register-user" element={<ContainerFormRegisterUser/>} />
                   <Route path="/login" element={<ContainerLogin/>} />
-                  <Route path="/Tienda" element={<Tienda />} />
                   <Route path="/Promociones" element={<Promociones />} />
                   <Route exact path="/" element={<Home />} />
                   <Route path="/ProductCatalog" element={<ProductCatalog />} />

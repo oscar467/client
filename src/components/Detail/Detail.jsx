@@ -104,23 +104,9 @@ const Detail = () => {
               Description:
               {myProduct.description ? myProduct.description : <Loading />}
             </Typography>
-<<<<<<< HEAD
             <Typography variant="h6" className={classes.description}>
               Category: {myProduct.Category?.name_category}
             </Typography>
-=======
-            <Typography variant="h6" className={classes.price}>
-              Price: ${myProduct.price ? myProduct.price : <Loading />}
-            </Typography>
-            {/* <Typography variant="h6" className={classes.description}>
-              Category:
-              {myProduct.Category.name_category !== undefined ? (
-                myProduct.Category.name_category
-              ) : (
-                <Loading />
-              )}
-            </Typography> */}
->>>>>>> 74c4c24c61de967f028e38cd836005e7fd0daab9
             <Button
               variant="contained"
               color="primary"
