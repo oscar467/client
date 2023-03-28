@@ -4,7 +4,7 @@ footer {
     height: 150px;
     background-color:whitesmoke;
     bottom: 0;
-    position:fixed;
+    position:relative;
     bottom: -0
 }
 

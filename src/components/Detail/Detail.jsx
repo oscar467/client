@@ -8,13 +8,13 @@ import {
   Breadcrumbs,
   Button,
   Card,
-  CardContent,
   CardMedia,
   DialogContent,
   DialogTitle,
   Typography,
 } from "@mui/material";
 import { Box, Container } from "@mui/system";
+import IndDec from "../../ui";
 
 const useStyles = makeStyles((theme) => ({
   box:{
@@ -44,18 +44,26 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     padding: '0px 50px',
   },
+  cant:{
+    display: 'flex',
+    marginTop:'100px',
+  },
   title: {
-    marginTop: theme.spacing(2),
+    display: 'flex',
+    width: '700px',
+    fontSize:'medium'
   },
   price: {
     marginTop: theme.spacing(2),
   },
   description: {
-    marginTop: theme.spacing(2),
+    display:'flex',
+    marginTop: '50px',
   },
   button: {
-    margin: theme.spacing(2),
-    top:'100px'
+    display:'flex',
+    width:'250px',
+    height:'50px',
   },
 }));
 
@@ -101,20 +109,30 @@ const Detail = () => {
               )}
             </Typography>
             <Typography variant="body1" className={classes.description}>
-              Description:
               {myProduct.description ? myProduct.description : <Loading />}
             </Typography>
-            <Typography variant="h6" className={classes.description}>
-              Category: {myProduct.Category?.name_category}
+            <Typography variant="h6" className={classes.price}>
+              Price: ${myProduct.price ? myProduct.price : <Loading />}
             </Typography>
-            <Button
+            <Typography variant="h6" className={classes.description}>
+              Category:
+              {myProduct.Category?.name_category !== undefined ? (
+                myProduct.Category.name_category
+              ) : (
+                <Loading />
+              )}
+            </Typography>
+            <Box className={classes.cant}>
+              <IndDec />
+              <Button
               variant="contained"
               color="primary"
               className={classes.button}
-            >
+              >
               Add to Cart
-            </Button>
-      </Container>
+              </Button>
+            </Box>
+          </Container>
       </DialogContent>  
       )}
     </div>
