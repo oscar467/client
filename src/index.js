@@ -30,8 +30,8 @@ const theme = createTheme({
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-//axios.defaults.baseURL = "https://api-cloths-production.up.railway.app/api/v1/";
-axios.defaults.baseURL = "http://localhost:3001/api/v1/";
+axios.defaults.baseURL = "https://api-cloths-production.up.railway.app/api/v1/";
+// axios.defaults.baseURL = "http://localhost:3001/api/v1/";
 root.render(
   <React.StrictMode>
     <Provider store={store}>
