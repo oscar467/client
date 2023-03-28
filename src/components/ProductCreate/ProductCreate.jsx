@@ -30,7 +30,6 @@ const ProductCreate = () => {
         handleImageChange,
         handleChangueCategory,
         handleSubmit,
-        image,
         handleChange, form} = useRegisterProduct(initialForm, validate, setInputImg);
 
     React.useEffect (()=>{

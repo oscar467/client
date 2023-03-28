@@ -10,12 +10,10 @@ export const getAllProducts = () => {
     });
   };
 };
-// headers: {
-//   //   'Content-Type': 'multipart/form-data'
-//   // }
+
 export const createProduct = (payload) => {
   return async function () {
-    return await axios.post("http://localhost:3001/api/v1/products", payload);
+    return await axios.post("products", payload);
   };
 };
 
