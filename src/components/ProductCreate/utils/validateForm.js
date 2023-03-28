@@ -21,15 +21,15 @@ export function validate (form){
     }else if(!onlyNumber.test(form.price)){
         errors.price="you must enter a number"
     }
-    // if(!form.stock){
-    //     errors.stock= "Debes ingresar un numero"
-    // }
-    // else if(inputEmpty.test(form.stock)){
-    //     errors.stock="the input is empty"
-    // }
-    // else if(!onlyNumber.test(form.stock)){
-    //     errors.stock="tienes que ingresar un numero"
-    // }
+    if(!form.stock){
+        errors.stock= "Debes ingresar un numero"
+    }
+    else if(inputEmpty.test(form.stock)){
+        errors.stock="the input is empty"
+    }
+    else if(!onlyNumber.test(form.stock)){
+        errors.stock="tienes que ingresar un numero"
+    }
 
     if(!form.discount){
         errors.discount= "Ingresa un descuento"
@@ -38,14 +38,6 @@ export function validate (form){
         errors.discount="the input is empty"
     }else if(!onlyNumber.test(form.discount)){
         errors.discount="you must enter a number"
-    }
-    if(!form.image){
-        errors.image= "la imagen debe ser una URL"
-    }
-    else if(inputEmpty.test(form.image)){
-        errors.image="the input is empty"
-    }else if(!isUrl.test(form.image)){
-        errors.image="you must enter a Url"
     }
     return errors;
 }
