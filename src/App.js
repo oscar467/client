@@ -18,13 +18,13 @@ import MetodosdePago from "./components/Footer/metodosdepago";
 import Detail from "./components/Detail/Detail";
 import ContainerFormRegisterUser from "./components/RegisterUser/ContainerFormRegisterUser";
 import ContainerLogin from "./components/FormLogin/ContainerLogin";
+import Cart from "./components/CartShop/Cart";
 
 
 function App() {
   return (
     <div>
       <NavBar />
-     
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/ProductCatalog" element={<ProductCatalog />} />
@@ -35,6 +35,7 @@ function App() {
         <Route path="/ProductCatalog/product/:id" element={<Detail />} />
         <Route path="/ProductCreate" element={<ProductCreate />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Cart" element={<Cart/>} />
       </Routes>
 
       <Footer />

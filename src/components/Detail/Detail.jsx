@@ -8,13 +8,13 @@ import {
   Breadcrumbs,
   Button,
   Card,
-  CardContent,
   CardMedia,
   DialogContent,
   DialogTitle,
   Typography,
 } from "@mui/material";
 import { Box, Container } from "@mui/system";
+import IndDec from "../../ui";
 
 const useStyles = makeStyles((theme) => ({
   box:{
@@ -44,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     padding: '0px 50px',
   },
+  cant:{
+    display: 'flex',
+    top:'100px',
+  },
   title: {
     marginTop: theme.spacing(2),
   },
@@ -55,7 +59,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(2),
-    top:'100px'
+    top:'100px',
+    left:'320px',
+    width:'250px',
+    height:'50px',
   },
 }));
 
@@ -107,14 +114,19 @@ const Detail = () => {
             <Typography variant="h6" className={classes.price}>
               Price: ${myProduct.price ? myProduct.price : <Loading />}
             </Typography>
-            {/* <Typography variant="h6" className={classes.description}>
+            <Typography variant="h6" className={classes.description}>
               Category:
-              {myProduct.Category.name_category !== undefined ? (
+              {myProduct.Category?.name_category !== undefined ? (
                 myProduct.Category.name_category
               ) : (
                 <Loading />
               )}
-            </Typography> */}
+            </Typography>
+
+            <Button className={classes.cant}>
+              <IndDec />
+            </Button>
+            
             <Button
               variant="contained"
               color="primary"
