@@ -1,4 +1,4 @@
-import { IconButton, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { clamp } from "./clamp";
@@ -12,30 +12,33 @@ export default function IndDec (){
     const [value, setValue] = useState(1);
 
     return(
-        <Box display='flex'>
-            <IconButton 
+        <Box display='flex' sx={{width: '400px',}}>
+            <Button 
                 sx={{
-                    borderRadius:0,
                     background:"black",
+                    display:'flex',
+                    height:'50px',
                 }}
             onClick={() =>setValue(clampV(value - 1))}>
                 <RemoveIcon sx={{color:'white'}}/>
-            </IconButton>
+            </Button>
             <Typography 
                 variant="h6" 
                 sx={{
-                    border: '1px solid black', p:'8px',
+                    p:'10px',
+                    margin: '4px',
                 }} >
                 {value}
             </Typography>
-            <IconButton 
+            <Button 
                 sx={{
-                    borderRadius:0,
                     background: "black",
+                    display:'flex',
+                    height:'50px',
                 }}
             onClick={() =>setValue(clampV(value + 1))}>
                 <AddIcon sx={{color:'white'}}/>
-            </IconButton>
+            </Button>
         </Box>
 
     )

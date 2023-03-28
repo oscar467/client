@@ -46,21 +46,22 @@ const useStyles = makeStyles((theme) => ({
   },
   cant:{
     display: 'flex',
-    top:'100px',
+    marginTop:'100px',
   },
   title: {
-    marginTop: theme.spacing(2),
+    display: 'flex',
+    width: '700px',
+    fontSize:'medium'
   },
   price: {
     marginTop: theme.spacing(2),
   },
   description: {
-    marginTop: theme.spacing(2),
+    display:'flex',
+    marginTop: '50px',
   },
   button: {
-    margin: theme.spacing(2),
-    top:'100px',
-    left:'320px',
+    display:'flex',
     width:'250px',
     height:'50px',
   },
@@ -108,7 +109,6 @@ const Detail = () => {
               )}
             </Typography>
             <Typography variant="body1" className={classes.description}>
-              Description:
               {myProduct.description ? myProduct.description : <Loading />}
             </Typography>
             <Typography variant="h6" className={classes.price}>
@@ -122,19 +122,17 @@ const Detail = () => {
                 <Loading />
               )}
             </Typography>
-
-            <Button className={classes.cant}>
+            <Box className={classes.cant}>
               <IndDec />
-            </Button>
-            
-            <Button
+              <Button
               variant="contained"
               color="primary"
               className={classes.button}
-            >
+              >
               Add to Cart
-            </Button>
-      </Container>
+              </Button>
+            </Box>
+          </Container>
       </DialogContent>  
       )}
     </div>
