@@ -1,7 +1,7 @@
 import {typesUsers} from '../types';
 
 const initialState = {
-    users: []
+    user: null
 }
 
 export const userR = (state = initialState, actions) => {
@@ -12,7 +12,18 @@ export const userR = (state = initialState, actions) => {
             }
         case typesUsers.login:
             return  {
-                ...state
+                ...state,
+                user: actions.payload
+            }
+        case typesUsers.logout:
+            return {
+                ...state,
+                user: actions.payload
+            }
+        case typesUsers.currentUser:
+            return {
+                ...state,
+                user: actions.user
             }
         default :
             return state

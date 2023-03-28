@@ -1,305 +1,150 @@
-import React, { useEffect } from "react";
-import { useState} from "react"; 
+import React from "react";
 import {getAlCategories} from "../../redux/actions/categoriesActions";
-import {createProduct} from "../../redux/actions/productsActions"
-import {useDispatch,useSelector} from "react-redux";
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
+import './ProducCreate.css';
 
-const onlyNumber= /^\d+$/;
-const isUrl= /^https?:.+.(jpg|jpeg|png|webp|avif|gif|svg)$/;
-const inputEmpty= /^\s+$/;
+import {useDispatch,useSelector} from "react-redux";
+import {Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
+import {Box} from "@mui/material";
+import {useRegisterProduct} from './hooks/useRegisterProduct';
+import {sizes, initialForm} from './utils/data';
+import {validate} from './utils/validateForm';
+
+
+
 
 const ProductCreate = () => {
+    const dispatch=useDispatch()
+    const categories= useSelector((state)=>state.categoriesR.categories);
 
-  const sizes=["S", "M", "L", "XL"]
+    const {
+        errors,
+        talla, category,
+        handleChangeTalla,
+        handleChangueCategory,
+        handleSubmit,
+        handleChange, form} = useRegisterProduct(initialForm, validate);
 
-  const dispatch=useDispatch()
-  const categories= useSelector((state)=>state.categoriesR.categories)
+    React.useEffect (()=>{
+        dispatch(getAlCategories());
+    },[dispatch])
 
-   useEffect (()=>{
-    dispatch(getAlCategories());
-  },[dispatch])
-
-
-   const [input,setInput]= useState({
-
-    name_product:"",
-    image:"",
-    price:"",
-    description:"",
-    size:[],
-    stock:"",
-    // freeShopping:"",
-    discount:"",
-    CategoryId:""
-
-    
-  });
-  
-
-  const [error,setError]= useState({
-
-    name_product:"",
-    image:"",
-    price:"",
-    description:"",
-    size:[],
-    stock:"",
-    // freeShopping:"",
-    discount:"",
-    CategoryId:""
-  });
-
-  function validate ({name_product,image,price,description,stock,freeShopping,discount}){
-    let errors={}
-   
-    if(!name_product){
-        errors.name_product = "enter a name"
-    }  else if(inputEmpty.test(name_product)){ 
-        errors.name_product= "the input is empty"
-    }
-    if(!description){
-      errors.description = "enter a description"
-    }  else if(inputEmpty.test(description)){ 
-      errors.description= "the input is empty"
-     }
-  //  if(!freeShopping){
-  //   errors.freeShopping = "enter a freeShopping"
-  //   }  else if(inputEmpty.test(freeShopping)){ 
-  //   errors.freeShopping= "the input is empty"
-  //   }
-
-    if(!price){
-      errors.price= "enter a price"
-  }
-   else if(inputEmpty.test(price)){
-      errors.price="the input is empty"
-  }else if(!onlyNumber.test(price)){
-      errors.price="you must enter a number"
-  }
-  if(!stock){
-    errors.stock= "enter a stock"
-}
- else if(inputEmpty.test(stock)){
-    errors.stock="the input is empty"
-}else if(!onlyNumber.test(stock)){
-    errors.stock="you must enter a number"
-}
-
-if(!discount){
-  errors.discount= "enter a discount"
-}
-else if(inputEmpty.test(discount)){
-  errors.discount="the input is empty"
-}else if(!onlyNumber.test(discount)){
-  errors.discount="you must enter a number"
-}
-    if(!image){
-        errors.image= "enter a Url"
-    }
-     else if(inputEmpty.test(image)){
-        errors.image="the input is empty"
-    }else if(!isUrl.test(image)){
-        errors.image="you must enter a Url"
-    }
-    
-    return errors;
-
-}
-
-function handleSelect1(e) {
-  if (input.size.find((t) => t.id === e.target.value)) {
-    console.log({ input });
-    alert("Already in the list");
-  } else {
-    setInput({
-      ...input,
-      size: [
-        ...input.size,
-        e.target.value
-        
-      ],
-    });
-  }
-} 
-// function handleSelect(e) {
-//   if (input.categoryId.find((t) => t.id === e.target.value)) {
-//     console.log({ input });
-//     alert("Already in the list");
-//   } else {
-//     setInput({
-//       ...input,
-//       categoryId: [
-//         ...input.categoryId,
-//         e.target.value
-        
-//       ],
-//     });
-//   }
-// }
-
-function handleSelect(e){
-  setInput({
-          ...input,
-          CategoryId: 
-            e.target.value
-        });
-
-}
-
-
-function handleSubmit(e){
-  e.preventDefault()
-  dispatch(createProduct(input))
-  
-  console.log(input)
- 
-  alert("you have created a Product")
-  setInput({
-    name_product:"",
-    image:"",
-    price:"",
-    description:"",
-    size:[],
-    stock:"",
-    // freeShopping:"",
-    discount:"",
-    CategoryId:""
-       })
-      }
-
-  function handleChange(e) {
-    setInput({
-        ...input,
-        [e.target.name]: e.target.value,
-      })
-    setError(validate({
-        ...input,
-        [e.target.name]: e.target.value,
-      }))
-    }
   return (
-
-    
-    <div>
-        <h1>CREATE NEW PRODUCT</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name Product:</label>
-          <input
-          type="text"
-          name="name_product"
-          placeholder="Name Product"
-          value={input.name_product}
-          onChange={handleChange}
-          />
-          {error.name_product?<p>{error.name_product}</p>:null}
-        </div>
-        <div>
-          <label>Price:</label>
-          <input
-          type="text"
-          name="price"
-          placeholder="Price"
-          value={input.price}
-          onChange={handleChange}
-          />
-          {error.price?<p>{error.price}</p>:null}
-        </div>
-        <div>
-          <label>Description:</label>
-          <input
-          type="text"
-          name="description"
-          placeholder="Description"
-          value={input.description}
-          onChange={handleChange}
-          />
-          {error.price?<p>{error.price}</p>:null}
-        </div>
-        <div>
-          <label>Size:</label>
-          <select
-           onChange={(e) => handleSelect1(e)}
-           >
-            
-              {sizes?.map((size) => (
-                <option value={size} key={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-
-        </div>
-        <div>
-          <label>image:</label>
-          <input
-          type="text"
-          name="image"
-          placeholder="Url of image"
-          value={input.image}
-          onChange={handleChange}
-          />
-          {error.image?<p>{error.image}</p>:null}
-        </div>
-        <div>
-          <label>Stock:</label>
-          <input
-          type="text"
-          name="stock"
-          placeholder="stock"
-          value={input.stock}
-          onChange={handleChange}
-          />
-          {error.stock?<p>{error.stock}</p>:null}
-        </div>
-        {/* <div>
-          <label>FreeShopping::</label>
-          <input
-          type="text"
-          name="freeShopping"
-          placeholder="freeShopping"
-          value={input.freeShopping}
-          onChange={handleChange}
-          />
-          {error.freeShopping?<p>{error.freeShopping}</p>:null}
-        </div> */}
-        <div>
-          <label>Discount:</label>
-          <input
-          type="text"
-          name="discount"
-          placeholder="discount"
-          value={input.discount}
-          onChange={handleChange}
-          />
-          {error.discount?<p>{error.discount}</p>:null}
-        </div>
-        <div>
-        <div>
-          <label>Category:</label>
-          <select
-           onChange={(e) => handleSelect(e)}
-           >
-              {categories?.map((categories) => (
-                <option  value={categories.id} key={categories.id}>
-                  {categories.name_category}
-                 
-                </option>
-              ))}
-            </select>
-        </div>
-        </div>
-
-        <input
-        type="submit"
-        value= "Create Product"
-        disabled={Object.entries(error).length !== 0}
-        />
+    <Container maxWidth="lg"
+               sx={{
+                   display: 'flex',
+                   justifyContent: 'flex-end',
+                   flexDirection: 'column',
+                   width: '50%', mt:3}}
+    >
+        <Typography variant="h5" sx={{textAlign: 'center'}}>INGRESA UN PRODUCTO</Typography>
+      <form >
+          <Box className="form-container">
+              <TextField
+                  color="secondary"
+                  name="name_product"
+                  label="nombre del producto"
+                  value={form.name_product}
+                  error={errors.name_product && true}
+                  helperText={errors.name_product}
+                  onChange={handleChange}
+              />
+              <TextField
+                  color="secondary"
+                  name="price"
+                  label="precio"
+                  error={errors.price&&true}
+                  helperText={errors.price}
+                  value={form.price}
+                  onChange={handleChange}
+              />
+              <TextField
+                  color="secondary"
+                  name="stock"
+                  value={form.stock}
+                  onChange={handleChange}
+                  label="Stock"
+                  error={errors.stock&&true}
+                  helperText={errors.stock}
+              />
+              <TextField
+                  color="secondary"
+                  name="discount"
+                  value={form.discount}
+                  onChange={handleChange}
+                  label="Descuento"
+                  error={errors.discount&&true}
+                  helperText={errors.discount}
+              />
+              <FormControl >
+                  <InputLabel color="secondary" >Categorias</InputLabel>
+                  <Select
+                      color="secondary"
+                      value={category}
+                      label="Ingresa una categoria"
+                      onChange={handleChangueCategory}
+                  >
+                      {
+                          categories.map(categories => (
+                              <MenuItem
+                                  key={categories.id}
+                                  value={categories.id}
+                              >{categories.name_category}
+                              </MenuItem>
+                          ))
+                      }
+                  </Select>
+              </FormControl>
+              <FormControl >
+                  <InputLabel color="secondary">Tallas</InputLabel>
+                  <Select
+                      value={talla}
+                      label="Tallas"
+                      color="secondary"
+                      onChange={handleChangeTalla}
+                  >
+                      {
+                          sizes.map(size => (
+                              <MenuItem
+                                  key={size}
+                                  value={size}
+                              >{size}
+                              </MenuItem>
+                          ))
+                      }
+                  </Select>
+              </FormControl>
+          </Box>
+          <Box className="container-des-img-btn">
+              <TextField
+                  color="secondary"
+                  name="image"
+                  value={form.image}
+                  onChange={handleChange}
+                  label="Imagen"
+                  error={errors.image&&true}
+                  helperText={errors.image}
+              />
+              <TextField
+                  name="description"
+                  color="secondary"
+                  multiline
+                  rows={4}
+                  value={form.description}
+                  onChange={handleChange}
+                  label="Descripcion"
+                  error={errors.description&&true}
+                  helperText={errors.description}
+              />
+          </Box>
       </form>
-    </div>
+        <Button
+            sx={{mt: 2}}
+            disabled={Object.entries(errors).length !== 0}
+            onClick={handleSubmit}
+            variant="contained"
+            type="submit" >Ingresar Producto</Button>
+    </Container>
   );
 };
-
+//disabled={Object.entries(error).length !== 0}
 export default ProductCreate;

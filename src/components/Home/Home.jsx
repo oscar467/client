@@ -7,14 +7,15 @@ import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
+import Carousel from "../Carousel/Carousel";
 
 
 const Home = () => {
   return (
     <>
-      <Banner />
-
-      <Container fixed>
+      {/* <Banner /> */}
+      <Carousel/> 
+      {/* <Container fixed>
         <Box sx={{ width: "100%" }}>
           <Stack
             direction="column"
@@ -23,7 +24,7 @@ const Home = () => {
             spacing={6}
           ></Stack>
         </Box>
-      </Container>
+      </Container> */}
     </>
   );
 };

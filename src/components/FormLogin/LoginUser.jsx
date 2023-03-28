@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Button,
-    FormControl,
+    FormControl, FormHelperText,
     IconButton,
     InputAdornment,
     InputLabel,
@@ -23,21 +23,25 @@ const LoginUser = () => {
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-    const {handleSubmit} = useFormLogin(form)
+    const {handleSubmit, handleLogout, errors} = useFormLogin(form)
+
 
     return (
         <form className="form-login" ref={form}>
             <Typography sx={{textAlign: 'center'}} variant="h4">Inicia Sesion</Typography>
             <TextField
+                error={errors.email && true}
                 id="outlined-basic"
                 label="Email"
                 variant="outlined"
-                color="secondary"
                 name="email"
+                color="secondary"
+                helperText={errors.email}
             />
             <FormControl variant="outlined">
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <OutlinedInput
+                    error={errors.pass && true}
                     id="password"
                     sx={{width: '100%'}}
                     name="password"
@@ -55,11 +59,15 @@ const LoginUser = () => {
                     }
                     label="Password"
                 />
+                <FormHelperText error>{errors.pass}</FormHelperText>
             </FormControl>
             <Box>
                 <Button onClick={handleSubmit} variant="contained" sx={{width: '100%', mb:3}}>Iniciar sesion</Button>
                 <Button variant="contained" sx={{width: '100%'}} endIcon={<GoogleIcon />} >
                     Goolge
+                </Button>
+                <Button onClick={handleLogout} variant="contained" sx={{width: '100%',mt:2}} >
+                    Cerrar Sesion
                 </Button>
             </Box>
         </form>

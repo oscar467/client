@@ -21,7 +21,7 @@ export const getDetails = (id) => {
   return async function (dispatch) {
     try {
       const getDetails = await axios.get(`products/${id}`);
-      console.log(getDetails.data);
+      // console.log(getDetails.data);
       dispatch({
         type: typesProducts.getDetails,
         payload: getDetails.data,

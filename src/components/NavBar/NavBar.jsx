@@ -95,9 +95,10 @@ const NavBar = (props) => {
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                <Link to="/ProductCreate" className={classes.link}>
                   Create
-                </Link>
+                {/*<Link to="/ProductCreate" className={classes.link}>*/}
+                {/*  Create*/}
+                {/*</Link>*/}
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -143,7 +144,7 @@ const NavBar = (props) => {
               width: "70px",
               height: "70px",
               borderRadius: "10px",
-              display: { md: "none" },
+              // display: { md: "none" },
               margin: "0px",
             }}
           >
@@ -187,7 +188,7 @@ const NavBar = (props) => {
             <CardMedia
               component="img"
               image="https://res.cloudinary.com/dfdzlzu79/image/upload/v1678920910/logotemporal.png"
-              alt="logo"
+              alt="Logo"
               sx={{
                 marginTop: "-32px",
                 marginInline: "8px",
@@ -257,9 +258,10 @@ const NavBar = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                  <Link to="/ProductCreate" className={classes.link}>
                     Create
-                  </Link>
+                  {/*<Link to="/ProductCreate" className={classes.link}>*/}
+                  {/*  Create*/}
+                  {/*</Link>*/}
                 </Button>
                 <Button
                   sx={{

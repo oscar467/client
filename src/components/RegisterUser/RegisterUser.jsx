@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Button,
-    FormControl,
+    FormControl, FormHelperText,
     IconButton,
     InputAdornment,
     InputLabel,
@@ -21,19 +21,19 @@ const RegisterUser = () => {
     const form = React.useRef(null)
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const {handleSubmit} = useForm(form);
-
-
+    const {handleSubmit, errors} = useForm(form);
 
     return (
         <form className="form" ref={form}>
             <Typography sx={{textAlign: 'center'}} variant="h3">Registrarse</Typography>
             <TextField
+                error={errors.fullName&& true}
                 id="outlined-basic"
                 label="Ingrese el nombre"
                 variant="outlined"
                 color="secondary"
                 name="fullName"
+                helperText={errors.fullName}
             />
             <TextField
                 id="outlined-basic"
@@ -41,13 +41,15 @@ const RegisterUser = () => {
                 variant="outlined"
                 color="secondary"
                 name="email"
+                error={errors.email&& true}
+                helperText={errors.email || errors.imaIncorrect}
             />
             <FormControl variant="outlined">
                 <InputLabel htmlFor="password">Contraseña</InputLabel>
                 <OutlinedInput
                     id="password"
                     name="password"
-                    // sx={{width: '100%'}}
+                    error={errors.pass&& true}
                     type={showPassword ? 'text' : 'password'}
                     endAdornment={
                         <InputAdornment position="end">
@@ -62,6 +64,7 @@ const RegisterUser = () => {
                     }
                     label="Password"
                 />
+                <FormHelperText error>{errors.pass}</FormHelperText>
             </FormControl>
             <TextField
                 id="outlined-basic"
@@ -69,6 +72,8 @@ const RegisterUser = () => {
                 variant="outlined"
                 color="secondary"
                 name="phone"
+                error={errors.phone && true}
+                helperText={errors.phone}
             />
             <Box>
                 <Button onClick={handleSubmit} variant="contained" sx={{width: '100%', mb:3}}>Registrarte</Button>

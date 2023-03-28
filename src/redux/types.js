@@ -13,5 +13,7 @@ export const typesProducts = {
 
 export const typesUsers = {
   createUser: 'POST_USER',
-  login: 'LOGIN'
+  login: 'LOGIN',
+  logout: 'LOGOUT',
+  currentUser: 'CURRENT_USER'
 }
