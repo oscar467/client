@@ -8,9 +8,10 @@ const ContainerFilters = () => {
   return (
     <Box
       sx={{
+        margin: "10px",
+        display: "flex",
         mb: 2,
         height: 50,
-        gap: "20px",
       }}
     >
       <FilterByCategory />

@@ -33,8 +33,8 @@ const Product = ({ product }) => {
         >
           <Card
             sx={{
-              maxWidth: "250",
-              height: "500px",
+              maxWidth: "280px",
+              height: "600px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",

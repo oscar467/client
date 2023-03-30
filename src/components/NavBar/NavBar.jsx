@@ -13,11 +13,25 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Grid, IconButton, Stack, TextField } from "@mui/material";
+import {
+  Badge,
+  Grid,
+  IconButton,
+  Menu,
+  MenuItem,
+  Stack,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import { useEffect, useState } from "react";
 import ScreenSearchDesktopIcon from "@mui/icons-material/ScreenSearchDesktop";
 import { makeStyles } from "@mui/styles";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useDispatch, useSelector } from "react-redux";
+import { currentUser, logout } from "../../redux/actions/userActions";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -31,13 +45,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = (props) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+  const [anchorElUser, setAnchorElUser] = useState();
+
+  const userLog = localStorage.getItem("auth");
   useEffect(() => {
+    dispatch(currentUser());
+    console.log(userLog);
     function handleResize() {
       setIsSmallScreen(window.innerWidth < 768);
     }
@@ -56,6 +76,19 @@ const NavBar = (props) => {
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const handleLogout = () => {
+    handleCloseUserMenu();
+    dispatch(logout());
   };
 
   const drawer = (
@@ -95,7 +128,7 @@ const NavBar = (props) => {
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                  Create
+                Create
                 {/*<Link to="/ProductCreate" className={classes.link}>*/}
                 {/*  Create*/}
                 {/*</Link>*/}
@@ -139,12 +172,10 @@ const NavBar = (props) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#d9d9d966",
               padding: "10px",
               width: "70px",
               height: "70px",
-              borderRadius: "10px",
-              // display: { md: "none" },
+              display: { md: "none" },
               margin: "0px",
             }}
           >
@@ -178,9 +209,7 @@ const NavBar = (props) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#d9d9d966",
               width: "255px",
-              borderRadius: "10px",
               maxHeight: "68px",
               display: { xs: "none", md: "block" },
             }}
@@ -201,6 +230,7 @@ const NavBar = (props) => {
 
           <Grid
             container
+            paddingLeft="8%"
             direction="row"
             height={"100%"}
             alignItems="center"
@@ -208,7 +238,6 @@ const NavBar = (props) => {
           >
             <Box
               sx={{
-                background: "#d9d9d966",
                 height: "70px",
                 marginBlock: "5px",
                 width: "auto",
@@ -216,8 +245,6 @@ const NavBar = (props) => {
                 alignItems: "center",
                 justifyContent: "space-around",
                 display: { xs: "none", md: "block" },
-                left: "65vw",
-                borderRadius: "10px",
               }}
             >
               <Grid
@@ -258,19 +285,6 @@ const NavBar = (props) => {
                     fontSize: "16px",
                   }}
                 >
-                    Create
-                  {/*<Link to="/ProductCreate" className={classes.link}>*/}
-                  {/*  Create*/}
-                  {/*</Link>*/}
-                </Button>
-                <Button
-                  sx={{
-                    color: "white",
-                    fontWeight: "bold",
-                    height: "80px",
-                    fontSize: "16px",
-                  }}
-                >
                   <Link to="/Contact" className={classes.link}>
                     Contact
                   </Link>
@@ -284,10 +298,8 @@ const NavBar = (props) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#d9d9d966",
               width: "255px",
               padding: "10px",
-              borderRadius: "10px",
             }}
           >
             <ScreenSearchDesktopIcon
@@ -318,6 +330,101 @@ const NavBar = (props) => {
                 },
               }}
             />
+          </Box>
+          <Box>
+            <Tooltip title="Favoritos">
+              <IconButton>
+                <FavoriteIcon
+                  fontSize="large"
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
+          </Box>
+          <Box>
+            <Tooltip title="Carrito">
+              <IconButton color="#ffffff">
+                <Badge badgeContent={2} color="primary">
+                  <ShoppingCartIcon fontSize="large" sx={{ color: "white" }} />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+          </Box>
+          <Box>
+            <Tooltip title="Login/Registro">
+              <IconButton onClick={handleOpenUserMenu}>
+                <AccountCircleIcon
+                  fontSize="large"
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <Box
+                sx={{
+                  backgroundColor: "black",
+                }}
+              >
+                {userLog ? (
+                  <>
+                    <MenuItem key="perfil">
+                      <Typography textAlign="center">
+                        <Link to="/account" className={classes.link}>
+                          perfil
+                        </Link>
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem key="logout">
+                      <Typography textAlign="center">
+                        <Link
+                          to="/"
+                          className={classes.link}
+                          onClick={handleLogout}
+                        >
+                          cerrar sesion
+                        </Link>
+                      </Typography>
+                    </MenuItem>
+                  </>
+                ) : (
+                  <>
+                    <MenuItem key="login">
+                      <Typography textAlign="center">
+                        <Link to="/login" className={classes.link}>
+                          Login
+                        </Link>
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem key="Register">
+                      <Typography textAlign="center">
+                        <Link to="/register-user" className={classes.link}>
+                          Register
+                        </Link>
+                      </Typography>
+                    </MenuItem>
+                  </>
+                )}
+              </Box>
+            </Menu>
           </Box>
         </Toolbar>
       </AppBar>
