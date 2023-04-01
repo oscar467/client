@@ -66,10 +66,9 @@ function App() {
         </Route>
       </Routes>
       <Routes>
-        <Route path="dashboard-admin" element={<LayoutDashBoard />}>
-          <Route path="product-create" element={<ProductCreate />} />
-          <Route path="/Checkout" element={<Checkout />} />
-        </Route>
+        <Route path="dashboard-admin" element={<LayoutDashBoard />}></Route>
+        <Route path="product-create" element={<ProductCreate />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
     </React.Fragment>
   );
