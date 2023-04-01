@@ -29,12 +29,7 @@ const FilterByCategory = () => {
       name: e.target.value,
       check: true,
     });
-    if (e.target.value == "Todas") {
-      dispatch(getAlCategories());
-      console.log("entro");
-    } else {
-      dispatch(filterByCategory(e.target.value));
-    }
+    dispatch(filterByCategory(e.target.value));
   };
 
   return (

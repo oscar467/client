@@ -33,45 +33,56 @@ export const getDetails = (id) => {
 };
 export const filterByCategory = (category) => {
   return async function (dispatch) {
-    try {
-      const getDetails = await axios.get(
-        `categories/filter-category/${category}`
-      );
+    const getAllProducts = await axios.get("products");
+    if (category == "Todas") {
       dispatch({
-        type: typesProducts.filterByCategory,
-        payload: getDetails.data[0].Products,
+        type: typesProducts.getAllProducts,
+        payload: getAllProducts.data,
       });
-    } catch (err) {
-      console.log(err);
+    } else {
+      try {
+        const getDetails = await axios.get(
+          `categories/filter-category/${category}`
+        );
+        dispatch({
+          type: typesProducts.filterByCategory,
+          payload: getDetails.data[0].Products,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 };
 export const orderByName = (value) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     try {
-      if (value === 'A-Z'||value === 'Z-A'){
-        const productsOrderByName = await axios.get(`products/order-products/${value}`);
+      if (value === "A-Z" || value === "Z-A") {
+        const productsOrderByName = await axios.get(
+          `products/order-products/${value}`
+        );
         dispatch({
           type: typesProducts.orderByName,
-          payload: productsOrderByName.data
-        })
+          payload: productsOrderByName.data,
+        });
       }
-      if (value === 'ASC' || value === 'DES'){
-        const productsOrderByPrice = await axios.get(`products/order-by-price/${value}`);
+      if (value === "ASC" || value === "DES") {
+        const productsOrderByPrice = await axios.get(
+          `products/order-by-price/${value}`
+        );
         dispatch({
           type: typesProducts.orderByName,
-          payload: productsOrderByPrice.data
-        })
-
+          payload: productsOrderByPrice.data,
+        });
       }
-    }catch (e) {
-      console.error(e)
+    } catch (e) {
+      console.error(e);
     }
-  }
-}
+  };
+};
 export const filterBySize = (size) => {
   return {
     type: typesProducts.filterBySizes,
-    size
-  }
-}
+    size,
+  };
+};

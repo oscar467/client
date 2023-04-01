@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyDontent: "center",
-    width: "50%",
+    width: "100%",
     gap: "20px",
     backgroundColor: "whitesmoke",
     borderRadius: "20px",
@@ -48,10 +48,7 @@ const Account = () => {
 
   const { user } = userData;
   return (
-    <Container
-      maxWidth="md"
-      sx={{ mt: 2, display: "flex", justifyContent: "center" }}
-    >
+    <Container maxWidth="md" sx={{ mt: 2, justifyContent: "center" }}>
       <Stack className={classes.root}>
         <Typography sx={{ textAlign: "center" }} variant="h4">
           Mi Perfil:
@@ -95,6 +92,12 @@ const Account = () => {
             </Grid>
           </Grid>
         </Grid>
+      </Stack>
+      <Stack className={classes.root}>
+        <Typography sx={{ textAlign: "center" }} variant="h4">
+          Mis Pedidos:
+        </Typography>
+        <p>aqui iran los pedidos...</p>
       </Stack>
     </Container>
   );
