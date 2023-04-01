@@ -1,6 +1,7 @@
 .form-login {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 50%;
     gap: 20px;
     height: 75vh;

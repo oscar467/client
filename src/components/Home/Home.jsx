@@ -1,31 +1,12 @@
 import React from "react";
-import Banner from "../Banner/Banner";
-import ProductOffers from "../ProductOffers/ProductOffers";
-import ProductCategories from "../ProductCategories/ProductCategories";
-import Contact from "../Contact/Contact";
-import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
 import Carousel from "../Carousel/Carousel";
-
 
 const Home = () => {
   return (
-    <>
-      {/* <Banner /> */}
-      <Carousel/> 
-      {/* <Container fixed>
-        <Box sx={{ width: "100%" }}>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={6}
-          ></Stack>
-        </Box>
-      </Container> */}
-    </>
+    <Box sx={{ height: "100vh", width: "100vw" }}>
+      <Carousel />
+    </Box>
   );
 };
 

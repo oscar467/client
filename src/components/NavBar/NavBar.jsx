@@ -128,14 +128,6 @@ const NavBar = (props) => {
             </ListItem>
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
-                Create
-                {/*<Link to="/ProductCreate" className={classes.link}>*/}
-                {/*  Create*/}
-                {/*</Link>*/}
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
                 <Link to="/Contact" className={classes.link}>
                   Contact
                 </Link>
@@ -388,7 +380,7 @@ const NavBar = (props) => {
                   <>
                     <MenuItem key="perfil">
                       <Typography textAlign="center">
-                        <Link to="/account" className={classes.link}>
+                        <Link to="/Account" className={classes.link}>
                           perfil
                         </Link>
                       </Typography>

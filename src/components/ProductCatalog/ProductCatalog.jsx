@@ -46,12 +46,7 @@ const ProductCatalog = () => {
         <SortBy />
       </Box>
       <Container maxWidth="lg">
-        <Grid
-          maxWidth="lg"
-          container
-          sx={{ gap: 2 }}
-          columns={{ xs: 2, sm: 2, md: 10, lg: 12.4 }}
-        >
+        <Grid maxWidth="lg" container sx={{ gap: 2 }}>
           <ProductContainer products={allProducts} />
         </Grid>
       </Container>
