@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import {login, logout} from '../../../redux/actions/userActions';
 import {useNavigate} from "react-router-dom";
 import {set} from "@cloudinary/url-gen/actions/variable";

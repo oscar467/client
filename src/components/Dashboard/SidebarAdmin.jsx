@@ -12,7 +12,7 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AppShortcutIcon from '@mui/icons-material/AppShortcut';
 import {Link} from "react-router-dom";
-//dashboard-admin/product-create
+// dashboard-admin/product-create
 const items = [
     {
         item: 'Home',

@@ -18,6 +18,7 @@ import { currentUser } from "./redux/actions/userActions";
 import { useDispatch } from "react-redux";
 import Layout from "./components/Layout/Layout";
 import LayoutDashBoard from "./components/Layout/LayoutDashBoard";
+import Checkout from "./components/CheckoutForm/Checkout";
 import Account from "./components/Account/Account";
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
       <Routes>
         <Route path="dashboard-admin" element={<LayoutDashBoard />}>
           <Route path="product-create" element={<ProductCreate />} />
+          <Route path="/Checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </React.Fragment>
