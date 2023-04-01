@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar/NavBar";
+// import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 import ProductCatalog from "./components/ProductCatalog/ProductCatalog";
 import ProductCreate from "./components/ProductCreate/ProductCreate";
@@ -19,7 +19,7 @@ import {currentUser} from './redux/actions/userActions';
 import {useDispatch} from "react-redux";
 import Layout from "./components/Layout/Layout";
 import LayoutDashBoard from "./components/Layout/LayoutDashBoard";
-
+import Checkout from "./components/CheckoutForm/Checkout";
 
 
 function App() {
@@ -50,9 +50,10 @@ function App() {
                     <Route path="/CambiosyDevoluciones" element={<CambiosyDevoluciones />}/>
                 </Route>
             </Routes>
-            <Routes>
+                <Routes>
                 <Route path="dashboard-admin" element={<LayoutDashBoard />} >
                     <Route path="product-create" element={<ProductCreate />} />
+                    <Route path="/Checkout" element={<Checkout/>}/>
                 </Route>
             </Routes>
         </React.Fragment>

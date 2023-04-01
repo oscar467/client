@@ -26,8 +26,7 @@ const Banner = () => {
           borderRadius: "10px",
         }}
       >
-        <h1>Summer sales</h1>
-        <h2>Up to 50% off</h2>
+        
       </div>
     </div>
   );
