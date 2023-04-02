@@ -10,15 +10,15 @@ const Footer = () => {
         <ul> 
           <div class='one'> Sobre Cool Style</div>
             <div>
-              <Link id='linkone' to="/QuienesSomos">¿Quienes Somos?</Link>
+              <Link  style={{color:"grey"}}  id='linkone' to="/QuienesSomos">¿Quienes Somos?</Link>
             </div>
 
             <div>
-              <Link id='linkone' to="/Promociones">Promociones</Link>
+              <Link style={{color:"grey"}} id='linkone' to="/Promociones">Promociones</Link>
             </div>
 
             <div>
-              <Link id='linkone' to="/MetodosdePago">Metodos de Pago</Link>
+              <Link style={{color:"grey"}} id='linkone' to="/MetodosdePago">Metodos de Pago</Link>
             </div>
         </ul>
       </section>
@@ -28,16 +28,16 @@ const Footer = () => {
         <ul> 
           <div class='two'> Politicas</div>
           <div>
-            <Link id='linkone' to="/TerminosyCondiciones">Términos y condiciones</Link>
+            <Link style={{color:"grey"}} id='linkone' to="/TerminosyCondiciones">Términos y condiciones</Link>
           </div>
           <div>
-            <Link id='linkone' to="/CambiosyDevoluciones">Cambios y Devoluciones</Link>
+            <Link style={{color:"grey"}} id='linkone' to="/CambiosyDevoluciones">Cambios y Devoluciones</Link>
           </div>
           <div>
-            <Link id='linkone' to="/Confidencialidad">Confidencialidad</Link>
+            <Link style={{color:"grey"}} id='linkone' to="/Confidencialidad">Confidencialidad</Link>
           </div>
           <div>
-            <Link id='linkone' to="/Envios">Envíos</Link>
+            <Link style={{color:"grey"}} id='linkone' to="/Envios">Envíos</Link>
           </div>
         </ul>
       </section>
@@ -50,10 +50,10 @@ const Footer = () => {
           <div class= 'three'>Atención al Cliente</div>
 
          <div>
-            <Link id='linkone' to="/PreguntasFrecuentes">Preguntas Frecuentes</Link>
+            <Link style={{color:"grey"}} id='linkone' to="/PreguntasFrecuentes">Preguntas Frecuentes</Link>
           </div>
           <div>
-            <Link id='linkone' to="/Contactanos">Contáctanos</Link>
+            <Link style={{color:"grey"}} id='linkone' to="/Contactanos">Contáctanos</Link>
           </div>
          
         </ul>

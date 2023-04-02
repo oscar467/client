@@ -5,17 +5,17 @@ const MetodosdePago= () =>{
         <div>
             <h1>Metodos de pago</h1>
 
-                <h2>Pay U</h2>
+                <h3>Pay U</h3>
 
-                <h2>Master Card</h2>
+                <h3>Master Card</h3>
                 
-                <h2>American Express</h2>
+                <h3>American Express</h3>
 
-                <h2>Visa</h2>
+                <h3>Visa</h3>
 
-                <h2>PSE    </h2>            
+                <h3>PSE</h3>            
 
-                <h2>Pago Contra-Entrega</h2>
+                <h3>Pago Contra-Entrega</h3>
 
         </div>
     )

@@ -5,6 +5,8 @@ import ProductCatalog from "./components/ProductCatalog/ProductCatalog";
 import ProductCreate from "./components/ProductCreate/ProductCreate";
 import Contact from "./components/Contact/Contact";
 import Promociones from "./components/Footer/promociones";
+import QuienesSomos from "./components/Footer/quienessomos";
+import MetodosdePago from "./components/Footer/metodosdepago";
 import TerminosyCondiciones from "./components/Footer/terminosycondiciones";
 import CambiosyDevoluciones from "./components/Footer/cambiosydevoluciones";
 import Confidencialidad from "./components/Footer/confidencialidad";
@@ -36,7 +38,7 @@ function App() {
           <Route path="/Account" element={<Account />} />
           <Route path="/Confidencialidad" element={<Confidencialidad />} />
           <Route path="/Envios" element={<Envios />} />
-          <Route
+          <Route 
             path="/PreguntasFrecuentes"
             element={<PreguntasFrecuentes />}
           />
@@ -46,7 +48,9 @@ function App() {
             element={<ContainerFormRegisterUser />}
           />
           <Route path="/login" element={<ContainerLogin />} />
+          <Route path="/QuienesSomos" element={<QuienesSomos />} />
           <Route path="/Promociones" element={<Promociones />} />
+          <Route path="/MetodosdePago" element={<MetodosdePago />} />
           <Route exact path="/" element={<Home />} />
           <Route path="/ProductCatalog" element={<ProductCatalog />} />
           <Route
