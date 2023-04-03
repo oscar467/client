@@ -15,55 +15,56 @@ import {
 } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import IndDec from "../../ui";
+import { addToCart } from "../../redux/actions/cartActions";
 
 const useStyles = makeStyles((theme) => ({
-  box:{
-    display: 'flex',
-    alignItems: 'start',
-    justifyContent:'start',
+  box: {
+    display: "flex",
+    alignItems: "start",
+    justifyContent: "start",
   },
-  link:{
-    textDecoration: 'none',
-    color:'white',
+  link: {
+    textDecoration: "none",
+    color: "white",
   },
-  wrapper:{
-    padding: '50px',
-    display: 'flex',
-    marginTop: '30px',
+  wrapper: {
+    padding: "50px",
+    display: "flex",
+    marginTop: "30px",
   },
-  conteinerImg:{
-    width: '500px',
+  conteinerImg: {
+    width: "500px",
     flex: 1,
   },
   image: {
-    width: '100%',
-    height: '90vh',
+    width: "100%",
+    height: "90vh",
     objectFit: "cover",
   },
-  infoContainer:{
+  infoContainer: {
     flex: 1,
-    padding: '0px 50px',
+    padding: "0px 50px",
   },
-  cant:{
-    display: 'flex',
-    marginTop:'100px',
+  cant: {
+    display: "flex",
+    marginTop: "100px",
   },
   title: {
-    display: 'flex',
-    width: '700px',
-    fontSize:'medium'
+    display: "flex",
+    width: "700px",
+    fontSize: "medium",
   },
   price: {
     marginTop: theme.spacing(2),
   },
   description: {
-    display:'flex',
-    marginTop: '50px',
+    display: "flex",
+    marginTop: "50px",
   },
   button: {
-    display:'flex',
-    width:'250px',
-    height:'50px',
+    display: "flex",
+    width: "250px",
+    height: "50px",
   },
 }));
 
@@ -78,9 +79,14 @@ const Detail = () => {
     dispatch(getDetails(params.id)).then(setLoading(false));
   }, []);
 
+  const handleAddToCart = () => {
+    console.log("entro handdle");
+    dispatch(addToCart(myProduct));
+  };
+
   return (
     <div>
-      <DialogTitle sx={{background: "black"}}>
+      <DialogTitle sx={{ background: "black" }}>
         <Box className={classes.box}>
           <Breadcrumbs aria-label="breadcrumb" className={classes.link}>
             <Link to="/">Home</Link>
@@ -88,9 +94,10 @@ const Detail = () => {
           </Breadcrumbs>
         </Box>
       </DialogTitle>
+
       {loading ? (
         <Loading />
-      ) : ( 
+      ) : (
         <DialogContent className={classes.wrapper}>
           <Card className={classes.conteinerImg}>
             <CardMedia
@@ -125,15 +132,16 @@ const Detail = () => {
             <Box className={classes.cant}>
               <IndDec />
               <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={handleAddToCart}
               >
-              Add to Cart
+                Add to Cart
               </Button>
             </Box>
           </Container>
-      </DialogContent>  
+        </DialogContent>
       )}
     </div>
   );

@@ -7,13 +7,19 @@ export const typesProducts = {
   getAllProducts: "GET_ALL_PRODUCTS",
   getDetails: "GET_DETAILS",
   filterByCategory: "FILTER_BY_CATEGORY",
-  filterBySizes: 'FILTER_BY_SIZES',
-  orderByName: 'ORDER_BY_NAME'
+  filterBySizes: "FILTER_BY_SIZES",
+  orderByName: "ORDER_BY_NAME",
 };
 
 export const typesUsers = {
-  createUser: 'POST_USER',
-  login: 'LOGIN',
-  logout: 'LOGOUT',
-  currentUser: 'CURRENT_USER'
-}
+  createUser: "POST_USER",
+  login: "LOGIN",
+  logout: "LOGOUT",
+  currentUser: "CURRENT_USER",
+};
+
+export const typesCart = {
+  addToCart: "ADD_TO_CART",
+  removeFromCart: "REMOVE_FROM_CART",
+  updateCartItem: "UPDATE_CART_ITEM",
+};
