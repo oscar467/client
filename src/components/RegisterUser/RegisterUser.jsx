@@ -45,7 +45,7 @@ const RegisterUser = () => {
                 helperText={errors.email || errors.imaIncorrect}
             />
             <FormControl variant="outlined">
-                <InputLabel htmlFor="password">Contraseña</InputLabel>
+                <InputLabel htmlFor="password">contraseña</InputLabel>
                 <OutlinedInput
                     id="password"
                     name="password"
