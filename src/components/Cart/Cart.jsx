@@ -1,7 +1,9 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { removeFromCart } from "../../redux/actions/cartActions";
 import { useDispatch } from "react-redux";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -30,33 +32,48 @@ const Cart = () => {
     <div>
       {products &&
         products.map((product, index) => (
-          <Grid container flex key={index}>
-            <Grid item xs={4}>
-              <img src={product.image} height={"150px"} />
-            </Grid>
-            <Grid item xs={8}>
-              <Grid container flex>
-                <Grid item xs={11}>
-                  <Typography
-                    variant="h4"
-                    sx={{ backgroundColor: "whitesmoke" }}
-                  >
-                    Nombre: {product.name_product}
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <button onClick={() => handleRemoveFromCart(product.id)}>
-                    (X)
-                  </button>
-                </Grid>
-              </Grid>
-              <p>Cantidad: {product.quantity}</p>
-              <p>precio unitario: {product.price}</p>
-            </Grid>
-          </Grid>
+          <Grid container flex key={index} sx={{marginTop:'20px'}} >
+            <Card sx={{ display: 'flex', width:"500px", height:'150px' }}>
+      <CardMedia
+        component="img"
+        sx={{ maxWidth: 150 }}
+        image={product.image}
+        alt="Live from space album cover"
+      />
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography component="div" variant="h7" fontWeight="bold">
+            {product.name_product}
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+            ${product.price}
+          </Typography>
+          <Typography variant="h6" component="div">
+            {product.quantity}
+          </Typography>
+        </CardContent>
+      </Box>
+              <Box>
+              <Button onClick={() => handleRemoveFromCart(product.id)}>
+                <HighlightOffIcon/>
+                </Button>
+              </Box>
+    </Card>
+    </Grid>
         ))}
-      <Box sx={{ backgroundColor: "#ae3737" }}>
-        <Typography variant="h3">Total: {myTotal}</Typography>
+      <Box sx={{marginTop:'30px'}}>
+        <Typography variant="h4">Total: {myTotal}</Typography>
+      </Box>
+      <Box>
+        <Button
+        variant="contained"
+        color="primary"
+        startIcon={<AttachMoneyIcon/>}
+        size="medium"
+        sx={{width:'500px'}}
+        >
+          pagar
+        </Button>
       </Box>
     </div>
   );
