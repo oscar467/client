@@ -36,7 +36,7 @@ const FilterByCategory = () => {
   const categories = useSelector((state) => state.categoriesR.categories);
   React.useEffect(() => {
     dispatch(getAlCategories());
-  }, []);
+  }, [dispatch]);
 
   const classes = useStyles();
 

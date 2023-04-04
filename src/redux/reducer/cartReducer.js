@@ -66,15 +66,6 @@ export const cartReducer = (state = initialState, action) => {
         }
         return item;
       });
-    case typesCart.updateCartItem:
-      return {
-        ...state,
-        items: updatedItems,
-        total:
-          state.total -
-          updatedItem.price * updatedItem.quantity +
-          updatedItem.price * action.payload.quantity,
-      };
     default:
       return state;
   }
