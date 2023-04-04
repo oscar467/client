@@ -467,7 +467,7 @@ const NavBar = (props) => {
         </Box>
       </Grid>
 
-      <Menu open={openCart} onClose={handleCloseCart}>
+      <Modal open={openCart} onClose={handleCloseCart}>
         <Box
           sx={{
             position: "absolute",
@@ -492,7 +492,7 @@ const NavBar = (props) => {
             <Cart />
           </Container>
         </Box>
-      </Menu>
+      </Modal>
     </>
   );
 };
