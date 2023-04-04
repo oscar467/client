@@ -2,7 +2,6 @@ import {
   Button,
   Card,
   CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
   Typography,
@@ -11,10 +10,12 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/actions/cartActions";
 
 const useStyles = makeStyles((theme) => ({
   link: {
-    color: "white",
+    color: "black",
     textDecoration: "none",
     "&:hover": {
       textDecoration: "underline",
@@ -24,24 +25,30 @@ const useStyles = makeStyles((theme) => ({
 
 const Product = ({ product }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const myProduct = useSelector((state) => product);
+  const handleAddToCart = () => {
+    console.log("entro handdle");
+    dispatch(addToCart(myProduct));
+  };
   return (
     <>
       {product ? (
-        <Link
-          to={`/ProductCatalog/product/${product.id}`}
-          className={classes.link}
+        <Card
+          sx={{
+            maxWidth: "270px",
+            display: "flex",
+            height: "600px",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          <Card
-            sx={{
-              maxWidth: "270px",
-              height: "600px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+          <Link
+            to={`/ProductCatalog/product/${product.id}`}
+            className={classes.link}
           >
-            <CardActionArea sx={{ maxWidth: "250" }}>
+            <CardActionArea sx={{ maxWidth: "250", height: "550px" }}>
               <CardMedia
                 component="img"
                 alt="placeholder"
@@ -57,18 +64,17 @@ const Product = ({ product }) => {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions sx={{ maxWidth: "250" }}>
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<AddShoppingCartIcon />}
-                size="medium"
-              >
-                Add To Cart
-              </Button>
-            </CardActions>
-          </Card>
-        </Link>
+          </Link>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<AddShoppingCartIcon />}
+            size="medium"
+            onClick={handleAddToCart}
+          >
+            Add To Cart
+          </Button>
+        </Card>
       ) : (
         <Loading />
       )}

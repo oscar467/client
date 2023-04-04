@@ -31,7 +31,7 @@ import { makeStyles } from "@mui/styles";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { currentUser, logout } from "../../redux/actions/userActions";
 import Cart from "../Cart/Cart";
 const drawerWidth = 240;
@@ -42,17 +42,6 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     "&:hover": {
       textDecoration: "underline",
-    },
-    modal: {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      width: 400,
-      bgcolor: "background.paper",
-      border: "2px solid #000",
-      boxShadow: 24,
-      p: 4,
     },
   },
 }));
@@ -71,9 +60,18 @@ const NavBar = (props) => {
 
   const userLog = localStorage.getItem("auth");
 
+  //const cartLog = localStorage.getItem("cart");
+  const cartLog = JSON.parse(localStorage.getItem("cart")) || {};
+
+  const [productsCount, setProductsCount] = useState(0);
+
   useEffect(() => {
     dispatch(currentUser());
-    console.log(userLog);
+
+    const items = cartLog.items || [];
+    const count = items.length || [];
+    setProductsCount(count);
+    console.log(items);
     function handleResize() {
       setIsSmallScreen(window.innerWidth < 768);
     }
@@ -88,7 +86,7 @@ const NavBar = (props) => {
         window.removeEventListener("resize", handleResize);
       }
     };
-  }, []);
+  }, [dispatch]);
 
   //Modal del cart
   const handleOpenCart = () => setOpenCart(true);
@@ -188,7 +186,6 @@ const NavBar = (props) => {
                 padding: "10px",
                 width: "70px",
                 height: "70px",
-                display: { md: "none" },
                 margin: "0px",
               }}
             >
@@ -219,7 +216,6 @@ const NavBar = (props) => {
             </Grid>
             <Box
               sx={{
-                display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 width: "255px",
@@ -254,7 +250,6 @@ const NavBar = (props) => {
                   height: "70px",
                   marginBlock: "5px",
                   width: "auto",
-                  display: "flex",
                   alignItems: "center",
                   justifyContent: "space-around",
                   display: { xs: "none", md: "block" },
@@ -359,12 +354,17 @@ const NavBar = (props) => {
             <Box>
               <Tooltip title="Carrito">
                 <IconButton color="#ffffff" onClick={handleOpenCart}>
-                  <Badge badgeContent={2} color="primary">
-                    <ShoppingCartIcon
-                      fontSize="large"
-                      sx={{ color: "white" }}
-                    />
-                  </Badge>
+                  {productsCount && (
+                    <Badge
+                      badgeContent={productsCount ? productsCount : 0}
+                      color="primary"
+                    >
+                      <ShoppingCartIcon
+                        fontSize="large"
+                        sx={{ color: "white" }}
+                      />
+                    </Badge>
+                  )}
                 </IconButton>
               </Tooltip>
             </Box>
@@ -474,9 +474,10 @@ const NavBar = (props) => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: 600,
-            bgcolor: "background.paper",
-            border: "2px solid #000",
-            boxShadow: 24,
+
+            borderRadius: "5px",
+            backgroundColor: "white",
+            boxShadow: "5px 5px 5px grey",
             p: 4,
           }}
         >

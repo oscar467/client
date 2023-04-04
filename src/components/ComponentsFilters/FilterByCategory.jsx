@@ -12,6 +12,21 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { getAlCategories } from "../../redux/actions/categoriesActions";
 import { filterByCategory } from "../../redux/actions/productsActions";
 import { useDispatch, useSelector } from "react-redux";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  acordion: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    backgroundColor: "white",
+    boxShadow: "5px 5px 5px grey",
+    alignItems: "center",
+    borderShadow: "100px",
+    borderRadius: "5px",
+  },
+}));
+
 const FilterByCategory = () => {
   const dispatch = useDispatch();
   const [stateR, setStateR] = React.useState({
@@ -23,6 +38,8 @@ const FilterByCategory = () => {
     dispatch(getAlCategories());
   }, []);
 
+  const classes = useStyles();
+
   const handleFilterByCategory = (e) => {
     console.log(e.target.value);
     setStateR({
@@ -33,11 +50,14 @@ const FilterByCategory = () => {
   };
 
   return (
-    <Accordion sx={{ mb: 2 }}>
+    <Accordion className={classes.acordion}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography>Categorias</Typography>
       </AccordionSummary>
-      <AccordionDetails sx={{ overflowY: "scroll", height: 200 }}>
+      <AccordionDetails
+        sx={{ overflowY: "scroll", height: 200 }}
+        className={classes.acordion}
+      >
         <RadioGroup>
           <FormControlLabel
             value="Todas"

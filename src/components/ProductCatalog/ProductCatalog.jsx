@@ -30,6 +30,8 @@ const ProductCatalog = () => {
       >
         <Box
           sx={{
+            position: "relative",
+            zIndex: 1,
             display: "flex",
             justifyContent: {
               lg: "flex-start",
@@ -45,8 +47,20 @@ const ProductCatalog = () => {
         </Box>
         <SortBy />
       </Box>
-      <Container maxWidth="lg">
-        <Grid maxWidth="lg" container sx={{ gap: 2 }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 0,
+        }}
+      >
+        <Grid
+          maxWidth="lg"
+          flex
+          justifyContent="center"
+          container
+          sx={{ gap: 4 }}
+        >
           <ProductContainer products={allProducts} />
         </Grid>
       </Container>
