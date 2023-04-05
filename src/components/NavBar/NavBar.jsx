@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import {
   Badge,
+  Container,
   Grid,
   IconButton,
   Menu,
@@ -356,8 +357,8 @@ const NavBar = (props) => {
                 <IconButton color="#ffffff" onClick={handleOpenCart}>
                   {productsCount && (
                     <Badge
-                      badgeContent={productsCount ? productsCount : 0}
-                      color="primary"
+                      badgeContent={productsCount}
+                      color="secondary"
                     >
                       <ShoppingCartIcon
                         fontSize="large"
@@ -487,7 +488,9 @@ const NavBar = (props) => {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             my products:
           </Typography>
-          <Cart />
+          <Container >
+            <Cart />
+          </Container>
         </Box>
       </Modal>
     </>

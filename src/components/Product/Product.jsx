@@ -2,8 +2,10 @@ import {
   Button,
   Card,
   CardActionArea,
+  CardActions,
   CardContent,
   CardMedia,
+  Container,
   Typography,
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -34,47 +36,52 @@ const Product = ({ product }) => {
   return (
     <>
       {product ? (
-        <Card
-          sx={{
-            maxWidth: "270px",
-            display: "flex",
-            height: "600px",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+        <Container sx={{maxWidth:'255px'}}>
+          <CardActionArea sx={{ maxWidth: "255px" }}>
+        <Link
+          to={`/ProductCatalog/product/${product.id}`}
+          className={classes.link}
         >
-          <Link
-            to={`/ProductCatalog/product/${product.id}`}
-            className={classes.link}
+          <Card
+            sx={{
+              maxWidth: "255px",
+              height: "350px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            <CardActionArea sx={{ maxWidth: "250", height: "550px" }}>
               <CardMedia
                 component="img"
                 alt="placeholder"
                 image={product.image}
-                sx={{ width: 250, maxHeight: 400, margin: 0 }}
+                sx={{ width: 250, maxHeight: 250, margin: 0 }}
               />
-              <CardContent sx={{ maxWidth: "250" }}>
-                <Typography gutterBottom variant="h5" component="div">
+              <CardContent sx={{ maxWidth: "250px" }}>
+                <Typography gutterBottom variant="h5" component="div" sx={{fontSize:'medium', fontWeight:'bold'}}>
                   {product.name_product}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {product.price}
+                  ${product.price}
                 </Typography>
               </CardContent>
+          </Card>
+        </Link>
             </CardActionArea>
-          </Link>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AddShoppingCartIcon />}
-            size="medium"
-            onClick={handleAddToCart}
-          >
-            Add To Cart
-          </Button>
-        </Card>
+        <CardActions sx={{ maxWidth: "255px" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<AddShoppingCartIcon />}
+                size="medium"
+                sx={{width:'255px'}}
+                onClick={handleAddToCart}
+              >
+                Add To Cart
+              </Button>
+            </CardActions>
+        </Container>
       ) : (
         <Loading />
       )}

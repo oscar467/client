@@ -11,10 +11,10 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#ae3737",
+      main: "#000000",
     },
     secondary: {
-      main: "#000000",
+      main: "#808080",
     },
   },
   breakpoints: {
